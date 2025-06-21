@@ -9,6 +9,9 @@ It has had some new features added, some UI tweaks, been made fully portable (it
 RED+ finds, displays, and deletes empty directories recursively below a given start folder. Furthermore, 
 it allows you to create custom rules for keeping and deleting folders (e.g. treat directories with empty files as empty).
 
+### You use this software entirely at your own risk!
+I've been using versions of the original RED for many years, and this enhanced RED+ since July 2024 with no significant issues. But I offer no guarantee that it will work for you on your system. 
+
 
 ## Features
 
@@ -58,120 +61,6 @@ In June 2025 RED+ was made available on GitHub
 	- The settings file has the same name as the executable but with an extension of '.cfg'
 	- If you want the settings saved to the %appdata% folder then create a dummy cfg file and set its Read Only attribute to true.
 - Added the foundations for translations using industry standard .po files
-
-_**History of Jonas John's RED**_
-
-2.3
-- Disabled settings during active search or deletion process
-- Refactored the interface to improve the design and usability
-  - Divided packed settings tab into three separate tabs
-  - Renamed some options and captions to make more sense 
-  - Added more descriptions and examples to explain settings
-  - Increased default window size and added more whitespace to make it look less crowded
-- Optimized config defaults
-  - Set pause between deletions to zero because the default delete to recycle bin method is slow enough to not overwhelm the GUI
-  - Deleted some unnecessary entries and updated some values
-  - Removed *.tmp as default pattern to make the default settings safer because those files could still contain valuable data in some cases.
-- Long paths support and other improvements (contributed by gioccher, see #5)
-  - Fix crash due to case sensitivity of paths 
-  - Speed up crawl and deletion by disabling UI updates (dubbed fast mode)
-  - Long path support by switching to AlphaFS 
-  - And more minor improvements (see closed pull request #5 for details)
-- Ignore folders newer than N hours #3 (contributed by jsytniak, see #3)
-
-2.2
-- Improved error handling
-- Added logging of errors and deleted directories
-- Added multiple delete modes (e.g. delete to recycle bin)
-- Implemented a function to delete a single empty directory
-- Implemented optional function to detect paths in clipboard
-- Infinite loop detection
-- Added a few new configuration settings
-- Removed counting method to increase speed
-- Replaced old custom settings module with the default settings framework of .NET to be more standard-compliant (This should fix problems some users had when starting RED)
-
-2.1
-- Implemented a "Protect" and "Unprotect" function to let the user choose folders to keep
-- Implemented an update button for a fast update check
-
-2.0
-- Created the installer (using NSIS)
-- Updated this readme file
-
-1.9
-- Added better-looking icons to the GUI
-- Corrected and updates some texts
-
-1.8
-- Finished the main parts of the application
-- Added XML configuration file
-
-1.7
-- Removed some main parts of the new application and started
-using the "BackgroundWorker" for threading support.
-
-1.6
-- Finished the first prototype of the C# version
-
-1.5
-- Started the development of an entirely new version of RED by using Microsoft Visual C# (.NET 2.0)
-
-1.4
-- Updated the readme and changed the license from GPL to LGPL
-- fixed some small issues
-
-1.2
-- Fixed the gauge in the process window
-- implemented a second safety check to prevent deleting filled folders
-
-1.1
-- renamed the program to RED (Remove empty directories)
-- made a new icon
-
-1.0
-- changes some structure things, renamed functions, renamed variables
-- corrected code, fixed some issues...
-- optional logfile implemented
-- other minor changes
-- updated version history -> complete rewrite ;)
-
-0.9
-- Added a readme, the licenses
-- Translated the readme into English
-
-0.8
-- Cleaned the directories and sorted the files
-- Renamed some functions and variables, to make it look better
-
-0.6 + 0.7
-- I learned about WinBinder (A native Windows binding for PHP) and converted
-the program to PHP with a Windows GUI using WinBinder
-
-0.5
-- Used NSIS Install System (http://nsis.sourceforge.net/) to create a
-GUI for the perl script
-
-0.2 - 0.4
-- Minor changes
-- Added filters to exclude some folders like the recycler
-
-0.1
-- I made a simple perl script to delete empty folders, I called it "DEF" (Delete Empty Folders)
-
-
-## Credits
-
-Third-party components
-- File system calls are powered by the [AlphaFS library](https://github.com/alphaleonis/AlphaFS)
-- The Installer is made by using [Inno Setup](https://jrsoftware.org/isinfo.php) & [Inno Setup Dependency Installer](https://github.com/DomGries/InnoDependencyInstaller)
-
-Icon sources
-- Nuvola icons (GNU LGPL 2.1. license)
-- NuoveXT icons (GPL license)
-- [famfamfam silk icons](http://www.famfamfam.com/lab/icons/ "famfamfam silk icons") (Creative Commons Attribution license) 
-- [Coffee icon](https://www.freeimages.com/de/photo/coffee-and-desserts-1571223 "Coffee icon") by Ivan Freaner
-- Ignore list icon taken from "Primo Icon Set" made by [Webdesigner Depot](http://www.webdesignerdepot.com/)
-  - License: Free of charge for personal or commercial purposes
 
 
 ## License

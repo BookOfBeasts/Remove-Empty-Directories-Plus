@@ -825,7 +825,7 @@ namespace RED.UI
 
         private void linkLabelProjectHomepage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/BookOfBeasts/");
+            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus");
         }
 
         private void linkLabelJonasJohnRed_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -835,12 +835,12 @@ namespace RED.UI
 
         private void linkLabelCheckForUpdates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories");
+            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus");
         }
 
         private void linkLabelFeedback_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories/issues");
+            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/issues");
         }
 
         private void btnCopyDebugInfo_Click(object sender, EventArgs e)
