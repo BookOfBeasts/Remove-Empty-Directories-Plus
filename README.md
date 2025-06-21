@@ -59,7 +59,7 @@ In June 2025 RED+ was made available on GitHub
 - Tweaked the UI layout and some of the icons
 - Settings load/save replaced with custom routine allowing truly portable use
 	- The settings file has the same name as the executable but with an extension of '.cfg'
-	- If you want the settings saved to the %appdata% folder then create a dummy cfg file and set its Read Only attribute to true.
+	- If you want the settings saved to the %appdata% folder then delete the .cfg file and RED+ will prompt for the location next time it is run.
 - Added the foundations for translations using industry standard .po files
 
 
