@@ -1,0 +1,8 @@
+#/
+bin/
+obj/
+packages/
+languages/
+.svn/
+.vs/
+*.suo

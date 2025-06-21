@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91B25075-18EE-4ADE-8704-A9C0935E15F7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RED</RootNamespace>
+    <AssemblyName>RED+</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IntermediateOutputPath>$(ProjectDir)..\obj\</IntermediateOutputPath>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Images\iconProject.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>RED.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AlphaFS, Version=2.2.0.0, Culture=neutral, PublicKeyToken=4d31a58f7d7ad5c9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlphaFS.2.2.6\lib\net452\AlphaFS.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GetText\ByteArrayComparer.cs" />
+    <Compile Include="GetText\GettextKey.cs" />
+    <Compile Include="GetText\GettextMOTranslation.cs" />
+    <Compile Include="GetText\GettextPluralParser.cs" />
+    <Compile Include="GetText\GettextPOEncoding.cs" />
+    <Compile Include="GetText\GettextPOTranslation.cs" />
+    <Compile Include="GetText\GettextTranslation.cs" />
+    <Compile Include="GetText\SpecialFormatters.cs" />
+    <Compile Include="GetText\Throw.cs" />
+    <Compile Include="GetText\TranslateOptions.cs" />
+    <Compile Include="GetText\Translation.cs" />
+    <Compile Include="GetText\Translator.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RedLib\Core.cs" />
+    <Compile Include="RedLib\DeletionWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RedLib\Enums.cs" />
+    <Compile Include="RedLib\Events.cs" />
+    <Compile Include="RedLib\FindEmptyDirectoryWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RedLib\RuntimeData.cs" />
+    <Compile Include="RedLib\SystemFunctions.cs" />
+    <Compile Include="RedLib\TreeManager.cs" />
+    <Compile Include="RedLib\DeleteModeItem.cs" />
+    <Compile Include="NotBob\NBExtensions.cs" />
+    <Compile Include="NotBob\NBSerialize.cs" />
+    <Compile Include="RedHelpers\RedUiAssist.cs" />
+    <Compile Include="NotBob\NBUtility.cs" />
+    <Compile Include="RedHelpers\RedAssist.cs" />
+    <Compile Include="RedHelpers\RedDebug.cs" />
+    <Compile Include="RedHelpers\RedExportScanResults.cs" />
+    <Compile Include="RedHelpers\RedGetText.cs" />
+    <Compile Include="RedMatch\RedMatchEnums.cs" />
+    <Compile Include="RedMatch\RedMatchItem.cs" />
+    <Compile Include="RedMatch\RedMatchItemList.cs" />
+    <Compile Include="RedMatch\RedScanResultItem.cs" />
+    <Compile Include="RedMatch\RedScanResultItemList.cs" />
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\ConfigFilters.cs" />
+    <Compile Include="Config\ConfigOptions.cs" />
+    <Compile Include="Config\ConfigRuntime.cs" />
+    <Compile Include="Config\ConfigUI.cs" />
+    <Compile Include="Config\ConfigVolatile.cs" />
+    <Compile Include="NotBob\NBDataIsDirty.cs" />
+    <Compile Include="Config\ConfigAssist.cs" />
+    <Compile Include="UI\FormLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormLanguage.Designer.cs">
+      <DependentUpon>FormLanguage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormRtfHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormRtfHelp.Designer.cs">
+      <DependentUpon>FormRtfHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotBob\UI\NBDataGridViewEx1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NotBob\UI\NBMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotBob\UI\NBMsgBox.Designer.cs">
+      <DependentUpon>NBMsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCFilterList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCFilterList.Designer.cs">
+      <DependentUpon>UCFilterList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCMenuButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\DeletionError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DeletionError.Designer.cs">
+      <DependentUpon>DeletionError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LogWindow.Designer.cs">
+      <DependentUpon>LogWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\FormLanguage.resx">
+      <DependentUpon>FormLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormRtfHelp.resx">
+      <DependentUpon>FormRtfHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotBob\UI\NBMsgBox.resx">
+      <DependentUpon>NBMsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCFilterList.resx">
+      <DependentUpon>UCFilterList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DeletionError.resx">
+      <DependentUpon>DeletionError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LogWindow.resx">
+      <DependentUpon>LogWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterPath.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterRegExName.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterRegExPath.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterStartswith.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_folder_ne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_help1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_home_jj_protected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_home_protected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_home2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_home2_protected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_info_doc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_info2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_list_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_protect_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_protect_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_protected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_protected2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_recyclebin1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_redcross1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_search_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_undo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_bartop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_collapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_config1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_config2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_delete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_exit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_export1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_export2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_filter1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterContains.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterEndswith.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_FilterName.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x24\x24_warning1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x128_Project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\iconProject.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x16\x16_languagex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\x48\x48_Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BuildTimeDebug.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BuildTimeRelease.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>C:\Binx\unix\gnu\bin\date.exe +"%25%25Y-%25%25m-%25%25dT%25%25T" &gt; "$(ProjectDir)Resources\BuildTime$(ConfigurationName).txt"
+</PreBuildEvent>
+  </PropertyGroup>
+</Project>
