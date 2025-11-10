@@ -1,6 +1,8 @@
 RED+: Remove Empty Directories Plus
 ===================================
 
+[Download RED+](https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/releases)
+
 RED+ is a fork of [Jonas John's](http://www.jonasjohn.de/) RED  
 RED+ was created by [Robert 'NotBob' Bookerby](https://github.com/BookOfBeasts)
 
@@ -50,6 +52,9 @@ In July 2024 Robert 'NotBob' Bookerby created RED+ using the core code of RED.
 In June 2025 RED+ was made available on GitHub
 
 ## Changelog
+
+25.0.1.0
+- Fixed issue with Last Used Directory not being restored on program load
 
 25.0.0.0
 - The 1st release of RED+, which is based on [Jonas John's](http://www.jonasjohn.de/) RED 2.3.0 beta

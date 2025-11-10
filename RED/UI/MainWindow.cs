@@ -102,7 +102,7 @@ namespace RED.UI
             // NotBob - Update the UI from the saved config details
             ConfigToUI();
             ConfigRestoreWindowDetails();
-            if (!string.IsNullOrWhiteSpace(RedConfig.Volatile.LastUsedDirectory))
+            if (!string.IsNullOrWhiteSpace(RedConfig.Runtime.Volatile.LastUsedDirectory))
             {
                 txtSearchDirectory.Text = RedConfig.Runtime.Volatile.LastUsedDirectory;
             }
@@ -142,6 +142,7 @@ namespace RED.UI
         /// </summary>
         private void ProcessCommandLineArgs()
         {
+            RedConfig.Runtime.Volatile.LastUsedDirectory = string.Empty;
             string[] args = Environment.GetCommandLineArgs();
 
             if (args.Length > 1)

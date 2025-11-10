@@ -1,0 +1,14 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+root = true
+
+# All files
+[*]
+indent_style = space
+
+# Xml files
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = silent
+
+[*.xml]
+indent_size = 2
