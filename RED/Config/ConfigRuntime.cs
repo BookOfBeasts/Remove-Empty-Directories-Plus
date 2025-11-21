@@ -19,6 +19,8 @@ namespace RED.Config
 
         internal SecondLanguage.Translator Translator = SecondLanguage.Translator.Default;
 
+        internal string HelpFile { get { return Path.Combine(ExecutablePath, @"help\index.htm"); } }
+
         internal ConfigVolatile Volatile { get; set; }
     }
 }

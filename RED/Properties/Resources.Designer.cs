@@ -61,7 +61,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-06-21T10:20:42
+        ///   Looks up a localized string similar to 2025-11-21T10:26:19
         ///.
         /// </summary>
         internal static string BuildTimeDebug {
@@ -71,12 +71,31 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-06-21T10:20:37
+        ///   Looks up a localized string similar to 2025-11-09T10:42:49
         ///.
         /// </summary>
         internal static string BuildTimeRelease {
             get {
                 return ResourceManager.GetString("BuildTimeRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Empty Directories Plus (RED+) is based on Jonas John&apos;s original Remove Empty Directores (RED)
+        ///
+        ///HINTS &amp; FAQ
+        ///
+        ///  * Right-click on a directory in the tree to get more options.
+        ///
+        ///  * If you only care about speed you can activate &quot;Fast mode&quot;, set delete mode
+        ///    to &quot;Bypass recycle bin and directly delete dirs&quot; and 
+        ///    &quot;Pause between each deletion&quot; to zero. This should give you a great speed 
+        ///    improvement but you will lose the recycle bin safety net and you won&apos;t see 
+        ///    the progress. I also m [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string help_filters {
+            get {
+                return ResourceManager.GetString("help_filters", resourceCulture);
             }
         }
         

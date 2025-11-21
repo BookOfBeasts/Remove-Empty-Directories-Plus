@@ -1,0 +1,41 @@
+Remove Empty Directories Plus (RED+) is based on Jonas John's original Remove Empty Directores (RED)
+
+HINTS & FAQ
+
+  * Right-click on a directory in the tree to get more options.
+
+  * If you only care about speed you can activate "Fast mode", set delete mode
+    to "Bypass recycle bin and directly delete dirs" and 
+    "Pause between each deletion" to zero. This should give you a great speed 
+    improvement but you will lose the recycle bin safety net and you won't see 
+    the progress. I also measured the performance difference: 
+    1000 empty dirs in normal mode take about 40 secs, with these settings 
+    less than one second.
+
+  * Why am I getting these annoying "cannot access file" or 
+    "Access to ... is denied." errors? -> That means RED tried to
+    scan or delete a file or directory that was locked by another 
+    application. This is a safety feature to ensure that programs
+    don't access files that are currently opened by another.
+
+    To fix this problem close all other programs before using RED. 
+    If that does not help you could try using tools such as
+    Unlocker (http://cedrick.collomb.perso.sfr.fr/unlocker/).
+
+COMMAND LINE
+  * RED+.exe [-autosearch] "path"
+      
+      -autosearch is an OPTIONAL switch which searches the supplied path as soon 
+      as RED+ starts. It MUST be supplied before "path"
+      
+      "path" is the path to be searched. It should be enclosed in double quotes.
+  
+
+TOOLS USED TO DEVELOP RED
+  * Microsoft Visual Studio C# Community
+
+
+LICENSE
+ * The program is distributed under the terms of the GNU Lesser General 
+   Public License which you can read over here: 
+   http://www.gnu.org/copyleft/lgpl.html

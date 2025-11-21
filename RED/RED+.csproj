@@ -358,6 +358,9 @@
   <ItemGroup>
     <None Include="Resources\BuildTimeRelease.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_filters.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>C:\Binx\unix\gnu\bin\date.exe +"%25%25Y-%25%25m-%25%25dT%25%25T" &gt; "$(ProjectDir)Resources\BuildTime$(ConfigurationName).txt"

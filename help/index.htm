@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="RED+ : Remove Empty Directories Plus Help">
+<meta name="author" content="Robert 'NotBob' Bookerby">
+<title>RED+ Help</title>
+<style>
+html * {font-family: Arial, sans-serif;}
+h1,h2,h3 {text-decoration: underline;}
+figure {display: table;}
+figure img {align: left;}
+figcaption {display: table-caption; caption-side: bottom; color: Blue; background-color: LightGrey; font-weight: bold; padding-left: 0.5em; width: auto;}
+.narrow-body {max-width: 900px; margin: 0 auto;}
+.footer {position: fixed; left: 0; bottom: 0; width: 100%; background-color: LightBlue; color: white; text-align: center;}
+.fal {float:left;}
+.far {float:right;}
+.red {font-weight: bold; color: red;}
+.imgx {width: 75%; transition: all 0.2s ease;}
+.imgx:hover {position: static; height: auto; width: auto;}
+.hint { color: DarkBlue; font-size: x-small; font-weight: bold; text-transform: uppercase;}
+.indent1 {margin-left: 2em;}
+</style>
+</head>
+
+<body><div class="narrow-body">
+
+<div>
+<h1>RED+ :<i> Remove Empty Directories Plus</i></h1>
+<figure style="float: left; margin-right: 2em;"><img src="img/Red+Logo.png"></figure>
+<div class="menu">
+<p>&nbsp;</p>
+<ul>
+ <li><a href="#rs-oview">Overview</a></li>
+ <li><a href="#rs-first">Default Config File</a></li>
+ <li><a href="#rs-opts1">Settings</a></li>
+ <li><a href="#rs-filt1">Filters (aka Rules)</a></li>
+ <li><a href="#rs-srch1">Searching</a></li>
+ <li><a href="#rs-cline">Command Line</a></li>
+</ul>
+<p><span class="hint">You can hover over most images to expand them</span></p>
+</div>
+</div>
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-oview">Overview</h3>
+<div>
+<div>
+<p>
+<span class="red">RED+</span> finds, displays, and deletes empty directories recursively below a given start folder.<br>
+Furthermore, it allows you to create custom rules for keeping and deleting folders (e.g. treat directories with empty files as empty).
+</p>
+<p>
+<span class="red">RED+</span> is an enhanced version of <a href="https://www.jonasjohn.de/">Jonas John</a>"s Remove Empty Directories (aka <a href="https://github.com/hxseven/Remove-Empty-Directories/">RED</a>). I found RED very useful over the years, but I wanted a little bit more. Jonas hadn"t updated RED in over 4 years and was unresponsive to email contact. And so <span class="red">RED+</span> was created.
+</p>
+<p>
+<span class="red">RED+</span> is <b>not</b> a rewrite. It uses <b>much</b> of the same source code as the original RED but has had the filter matching and editing portions completely rewritten to provide more flexible and easy to edit rules. This was done to:
+<ul> 
+<li>Provide more flexible matching rules (Contains, Endswith, Startswith, Exact etc)</li>
+<li>To allow rules to be selectively enabled / disabled</li>
+<li>To make it portable</li>
+</ul>
+</p>
+<p>
+<h4>What is it good for?</h4>
+<p><small>From the original RED author:</small><blockquote>
+One might think that searching and deleting empty directories is a trivial thing, but once you have hundreds of them it get"s really exhausting. That"s the reason Jonas made RED. It’s a small and simple tool that searches and deletes empty directories recursively below a given start folder. And before deleting anything it let’s you check all empty directories it found.</blockquote>
+</p>
+<h4>Features</h4>
+<ul>
+ <li>Shows empty directories before deleting them</li>
+ <li>Supports multiple delete modes (including Delete to recycle bin)</li>
+ <li>User configurable filters allow white and black listing of directories</li>
+ <li>Filter rules can be enabled / disabled as required</li>
+ <li>Can treat directories with empty files as empty</li>
+ <li>Portable</li>
+</ul>
+</div>
+<div>
+The <b>Search</b> tab on main screen is where you specify the directory where a search for empty directories is to begin, perform the search, and show the results. It is also where you can delete the empty directories it has found.
+<figure><img class="imgx" src="img/screen-M01.png" loading="lazy"><figcaption>The Search Tab</figcaption></figure>
+The results of a search are shown in a treeview. The icons next to each directory are explained in the legend to the right of the treeview.
+<figure><img class="imgx" src="img/screen-M02.png" loading="lazy"><figcaption>Treeview Showing Results of a Search</figcaption></figure>
+</div>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-first">Default Config File</h3>
+<div>
+<div>
+<span class="red">RED+</span> stores its settings in a file with the same name as the executable (RED+.exe) but with a <i>.cfg</i> extension (RED+.cfg). If <span class="red">RED+</span> cannot find its config file it will prompt you to create one - with default settings.
+<figure><img src="img/screen-C01.png" loading="lazy"><figcaption>Config File Prompt</figcaption></figure>
+</div>
+<div>
+<p>
+<br><em>Portable Mode</em> stores the config in the same folder as the executable.
+<br>You <b>MUST</b> have write permissions in this folder.
+<div class="indent1">By default Windows will prevent you from writing to files in your <code>%ProgramFiles%</code> <small>[default=C:\Program Files]</small> and <code>%ProgramFiles(x86)%</code> <small>[default=C:\Program Files (x86)]</small> folders.
+</div>
+<br><em>%APPDATA%</em> stores the config in your Windows user data folder.
+<br>This is typically <code>C:\Users\<i>&lt;your-username&gt;</i>\AppData\Roaming\NotBob\RemoveEmptyDirectories</code>
+</p>
+</div>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-opts1">Settings</h3>
+<div>
+<div id="opts-1">
+<figure><img class="imgx" src="img/screen-S01.png" loading="lazy"><figcaption>Settings</figcaption></figure>
+</div>
+<div id="opts-advanced">
+<figure><img class="imgx" src="img/screen-S02.png" loading="lazy"><figcaption>Advanced Settings</figcaption></figure>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-filt1">Filters (aka Rules)</h3>
+<div>
+<p></p>These are the default filter rules that <span class="red">RED+</span> uses.</p>
+<p>You can reset the rules to these defaults on the <a href="#opts-advanced">Advanced Settings</a> tab.</p>
+<figure><img class="imgx" src="img/screen-F01.png" loading="lazy"><figcaption>Filters: Directory Ignore</figcaption></figure>
+<figure><img class="imgx" src="img/screen-F02.png" loading="lazy"><figcaption>Filters: Directory Never Empty</figcaption></figure>
+<figure><img class="imgx" src="img/screen-F03.png" loading="lazy"><figcaption>Filters: File Ignore</figcaption></figure>
+<p>Filter rules can be added, edited, or deleted using the toolbar above the rules grid.</p>
+<figure><img class="imgx" src="img/screen-F01-edit1.png" loading="lazy"><figcaption>Filters: Edit</figcaption></figure>
+<figure><img class="imgx" src="img/screen-F01-edit2.png" loading="lazy"><figcaption>Filters: Edit</figcaption></figure>
+Clicking on the help icon <img src="img/screen-F01-edithlp.png" loading="lazy"> on the Filters page will display help editing rules (specific to the filter).
+<figure><img class="imgx" src="img/screen-F01-edit3.png" loading="lazy"><figcaption>Filters: Edit Help</figcaption></figure>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-srch1">Searching</h3>
+<div>
+<figure><img class="imgx" src="img/screen-M01-search1.png" loading="lazy"><figcaption>Searching</figcaption></figure>
+<figure><img class="imgx" src="img/screen-M01-search2.png" loading="lazy"><figcaption>Search: Delete Matches</figcaption></figure>
+<figure><img class="imgx" src="img/screen-M01-search3.png" loading="lazy"><figcaption>Search: Cancel</figcaption></figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet mi non turpis laoreet mattis. Phasellus ullamcorper porta felis eget vestibulum. Vivamus sodales mattis augue sit amet condimentum. Nullam at imperdiet felis. Fusce vel finibus ex. Aliquam tempus sit amet orci ut varius. Nullam ullamcorper, diam eu ornare ornare, tortor eros suscipit quam, at vehicula erat turpis vel massa. Ut mattis mauris ut mollis finibus. Donec vel diam justo. Aliquam dignissim ante id mi consequat posuere. Quisque vitae varius ligula.</p>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-cline">Command Line</h3>
+<div>
+<pre>
+  RED+.exe [SWITCHES] "path"
+      
+    -autosearch is an OPTIONAL switch which searches the supplied path as soon 
+    as RED+ starts. It MUST be supplied before "path"
+      
+   "path" is the path to be searched. It should be enclosed in double quotes.
+   
+   e.g. RED+.exe -autosearch X:\NotBob\Test
+</pre>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr><p>&nbsp;</p>
+
+<div class="footer">
+ <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<small>modified: 2025-November-18</small>&nbsp</span>
+</div>
+
+</body>
+</html>

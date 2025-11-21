@@ -24,6 +24,7 @@ namespace RED.UI
         private readonly RuntimeData RunData = new RuntimeData();
         private RedConfiguration RedConfig = null;
         private readonly Stopwatch RuntimeWatch = new Stopwatch();
+        private bool AutoSearchOnStart = false;
 
         #region Init methods
 
@@ -81,6 +82,10 @@ namespace RED.UI
             // NotBob - use file version info rather than product version
             FileVersionInfo vi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
             lbAppTitle.Text = string.Format("{0} v{1}", RedGetText.Red.Title, vi.FileVersion.ToString());
+#if DEBUG
+            lbAppTitle.Text += " (DBUG)";
+#endif
+
             lbStatus.Text = string.Empty;
             // NotBob - Display BuildTime info on the About tab
             DateTime buildTime = RedAssist.GetBuildTime();
@@ -96,6 +101,8 @@ namespace RED.UI
 
             SetProcessActiveLock(false);
             UiProgressBar(false);
+
+            txtHelp.Text = Properties.Resources.help_filters;
 
             ProcessCommandLineArgs();
 
@@ -148,6 +155,19 @@ namespace RED.UI
             if (args.Length > 1)
             {
                 args[0] = string.Empty;
+
+                // Extract any switches
+                int i = 1;
+                while (args[i].StartsWith("-"))
+                {
+                    if (args[i].ToLower() == "-autosearch")
+                    {
+                        AutoSearchOnStart = true;
+                    }
+                    args[i] = string.Empty;
+                    i++;
+                }
+                // Any remaining args are treated as a pathname
                 string path = string.Join(string.Empty, args).Replace("\"", string.Empty).Trim();
                 // add ending backslash
                 if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
@@ -256,6 +276,7 @@ namespace RED.UI
 
             tcMain.SelectedTab = tabSearch;
 
+            btnSearch.Enabled = false;
             Core.SearchingForEmptyDirectories();
         }
 
@@ -287,7 +308,7 @@ namespace RED.UI
             // Search finished
 
             RuntimeWatch.Stop();
-            string runtime = string.Format("{0:D2}:{1:D2}", RuntimeWatch.Elapsed.Minutes, RuntimeWatch.Elapsed.Seconds);
+            string runtime = string.Format("{0:D2}:{1:D2}.{2:D2}", RuntimeWatch.Elapsed.Minutes, RuntimeWatch.Elapsed.Seconds, RuntimeWatch.Elapsed.Milliseconds);
             SetStatusAndLogMessage(TXT.Translate("Empty Directories Found: {0} (Checked: {1} / Runtime: {2})", e.EmptyFolderCount, e.FolderCount, runtime));
 
             if (RedConfig.Options.AutoProtectRoot)
@@ -298,8 +319,8 @@ namespace RED.UI
             UiProgressBar(false, true, e.EmptyFolderCount);
             UpdateContextMenu(cmTreeview, true);
             SetProcessActiveLock(false);
-            btnScearch.Enabled = true;
-            btnScearch.Text = TXT.Translate("&Search Again");
+            btnSearch.Enabled = true;
+            //btnSearch.Text = TXT.Translate("&Search Again");
             btnDelete.Enabled = (e.EmptyFolderCount > 0);
 
             TreeMgr.OnSearchFinished();
@@ -317,7 +338,7 @@ namespace RED.UI
             UiProgressBar(true, true, RunData.ScanResults.Count);
             UpdateContextMenu(cmTreeview, false);
             SetProcessActiveLock(true);
-            btnScearch.Enabled = false;
+            btnSearch.Enabled = false;
             btnDelete.Enabled = false;
 
             UpdateRuntimeDataObject();
@@ -386,7 +407,7 @@ namespace RED.UI
 
             UiProgressBar(false);
             SetProcessActiveLock(false);
-            btnScearch.Enabled = true;
+            btnSearch.Enabled = true;
             btnDelete.Enabled = false;
 
             // Increase deletion statistics (shown in about tab)
@@ -414,7 +435,7 @@ namespace RED.UI
             }
 
             SetProcessActiveLock(false);
-            btnScearch.Enabled = true;
+            btnSearch.Enabled = true;
             btnDelete.Enabled = false;
 
             TreeMgr.OnProcessCancelled();
@@ -434,7 +455,7 @@ namespace RED.UI
             }
 
             SetProcessActiveLock(false);
-            btnScearch.Enabled = true;
+            btnSearch.Enabled = true;
             btnDelete.Enabled = false;
 
             TreeMgr.OnProcessCancelled();
@@ -466,7 +487,7 @@ namespace RED.UI
         private void tsmiSearchOnlyThisDirectory_Click(object sender, EventArgs e)
         {
             txtSearchDirectory.Text = TreeMgr.GetSelectedFolderPath();
-            btnScearch.PerformClick();
+            btnSearch.PerformClick();
         }
 
         private void tsmiProtectDirectoryOnce_Click(object sender, EventArgs e)
@@ -745,7 +766,15 @@ namespace RED.UI
         private void MainWindow_Shown(object sender, EventArgs e)
         {
             UiBusy(false);
-            UiClipboardCheck();
+            if (AutoSearchOnStart && txtSearchDirectory.Text.Length > 0)
+            {
+                AutoSearchOnStart = false;
+                btnSearch.PerformClick();
+            }
+            else
+            {
+                UiClipboardCheck();
+            }
         }
 
         private void lbUiStatus_DoubleClick(object sender, EventArgs e)
@@ -772,19 +801,12 @@ namespace RED.UI
 
         private void tcMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pnlActionsSearch.Enabled = (tcMain.SelectedTab == tabSearch);
+
             if (tcMain.SelectedTab == tabSettings)
             {
                 if (RedConfig != null && RedConfig.IsReadOnly)
                 {
-                    foreach (GroupBox item in tabSettings1.Controls)
-                    {
-                        item.Enabled = false;
-                    }
-                    foreach (GroupBox item in tabSettings2.Controls)
-                    {
-                        item.Enabled = false;
-                    }
-                    gbAdvancedExtras.Enabled = true;
                     btnResetConfig.Enabled = false;
                     lbStatus.Text = "Settings are ReadOnly and cannot be changed";
                 }
@@ -799,9 +821,18 @@ namespace RED.UI
 
         #region Config and misc stuff
 
+        private void btnResetFilters_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == UiAssist.MsgBoxYesNo(this, TXT.Translate("Do you really want to reset ALL FILTERS to their default values?")))
+            {
+                RedConfig.Filters.SetToDefaults();
+                ConfigToUI();
+            }
+        }
+
         private void btnResetConfig_Click(object sender, EventArgs e)
         {
-            if (DialogResult.OK == UiAssist.MsgBoxYesNo(this, TXT.Translate("Do you really want to reset all settings to their default values?")))
+            if (DialogResult.OK == UiAssist.MsgBoxYesNo(this, TXT.Translate("Do you really want to reset ALL Settings and Filters to their default values?")))
             {
                 RedConfig.Options.SetToDefaults();
                 RedConfig.Filters.SetToDefaults();
@@ -842,6 +873,14 @@ namespace RED.UI
         private void linkLabelFeedback_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/issues");
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(RedConfig.Runtime.HelpFile))
+            {
+                Process.Start(RedConfig.Runtime.HelpFile);
+            }
         }
 
         private void btnCopyDebugInfo_Click(object sender, EventArgs e)
@@ -984,6 +1023,20 @@ namespace RED.UI
             cbRememberWindowDetails.Checked = RedConfig.Options.RememberWindowDetails;
             cbRememberLastUsedDirectory.Checked = RedConfig.Options.RememberLastUsedDirectory;
             cbRememberDeletionStats.Checked = RedConfig.Options.RememberDeletionStats;
+
+            if (RedConfig != null && RedConfig.IsReadOnly)
+            {
+                foreach (GroupBox item in tabSettings1.Controls)
+                {
+                    item.Enabled = false;
+                }
+                foreach (GroupBox item in tabSettings2.Controls)
+                {
+                    item.Enabled = false;
+                }
+                gbAdvancedExtras.Enabled = true;
+                btnResetConfig.Enabled = false;
+            }
         }
 
         private void ConfigRestoreWindowDetails()
@@ -1084,6 +1137,5 @@ namespace RED.UI
                 }
             }
         }
-
     }
 }

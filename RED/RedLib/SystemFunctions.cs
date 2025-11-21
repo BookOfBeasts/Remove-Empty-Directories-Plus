@@ -41,9 +41,9 @@ namespace RED
 	public class SystemFunctions
 	{
 		// Registry keys
-		private const string registryMenuName = "Folder\\shell\\Remove empty dirs";
+		private const string registryMenuName = "Folder\\shell\\Remove Empty Dirs";
 
-		private const string registryCommand = "Folder\\shell\\Remove empty dirs\\command";
+		private const string registryCommand = "Folder\\shell\\Remove Empty Dirs\\command";
 
 		public static void ManuallyDeleteDirectory(string path, DeleteModes deleteMode)
 		{
