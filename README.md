@@ -88,7 +88,7 @@ Third-party components
 Icon sources
 - Nuvola icons (GNU LGPL 2.1. license)
 - NuoveXT icons (GPL license)
-- [famfamfam silk icons](http://www.famfamfam.com/lab/icons/ "famfamfam silk icons") (Creative Commons Attribution license) 
+- [famfamfam silk icons](https://github.com/legacy-icons/famfamfam-silk) (Creative Commons Attribution 2.5 license) 
 - [FatCow free-icons] (https://github.com/gammasoft/fatcow) (Creative Commons Attribution 3.0 license)
 
 ## License

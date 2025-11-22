@@ -20,6 +20,9 @@ figcaption {display: table-caption; caption-side: bottom; color: Blue; backgroun
 .imgx:hover {position: static; height: auto; width: auto;}
 .hint { color: DarkBlue; font-size: x-small; font-weight: bold; text-transform: uppercase;}
 .indent1 {margin-left: 2em;}
+
+.menu {display: table;}
+.menu > div {display: table-cell; vertical-align: top;}
 </style>
 </head>
 
@@ -27,9 +30,9 @@ figcaption {display: table-caption; caption-side: bottom; color: Blue; backgroun
 
 <div>
 <h1>RED+ :<i> Remove Empty Directories Plus</i></h1>
-<figure style="float: left; margin-right: 2em;"><img src="img/Red+Logo.png"></figure>
 <div class="menu">
-<p>&nbsp;</p>
+<div><img src="img/Red+Logo.png"></td></div>
+<div>
 <ul>
  <li><a href="#rs-oview">Overview</a></li>
  <li><a href="#rs-first">Default Config File</a></li>
@@ -37,9 +40,12 @@ figcaption {display: table-caption; caption-side: bottom; color: Blue; backgroun
  <li><a href="#rs-filt1">Filters (aka Rules)</a></li>
  <li><a href="#rs-srch1">Searching</a></li>
  <li><a href="#rs-cline">Command Line</a></li>
+ <li><a href="#rs-creds">Credits</a></li>
+ <li><a href="#rs-licen">License</a></li>
 </ul>
-<p><span class="hint">You can hover over most images to expand them</span></p>
 </div>
+</div>
+<span class="hint">You can hover over most images to expand them</span>
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr>
@@ -138,7 +144,6 @@ Clicking on the help icon <img src="img/screen-F01-edithlp.png" loading="lazy"> 
 <figure><img class="imgx" src="img/screen-M01-search1.png" loading="lazy"><figcaption>Searching</figcaption></figure>
 <figure><img class="imgx" src="img/screen-M01-search2.png" loading="lazy"><figcaption>Search: Delete Matches</figcaption></figure>
 <figure><img class="imgx" src="img/screen-M01-search3.png" loading="lazy"><figcaption>Search: Cancel</figcaption></figure>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet mi non turpis laoreet mattis. Phasellus ullamcorper porta felis eget vestibulum. Vivamus sodales mattis augue sit amet condimentum. Nullam at imperdiet felis. Fusce vel finibus ex. Aliquam tempus sit amet orci ut varius. Nullam ullamcorper, diam eu ornare ornare, tortor eros suscipit quam, at vehicula erat turpis vel massa. Ut mattis mauris ut mollis finibus. Donec vel diam justo. Aliquam dignissim ante id mi consequat posuere. Quisque vitae varius ligula.</p>
 </div>
 
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
@@ -158,10 +163,34 @@ Clicking on the help icon <img src="img/screen-F01-edithlp.png" loading="lazy"> 
 </div>
 
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-creds">Credits</h3>
+<div>
+Third-party components
+<ul>
+<li>File system calls are powered by the <a href="https://github.com/alphaleonis/AlphaFS">AlphaFS Library</a> (MIT License)</li>
+</ul>
+Icon sources
+<ul>
+<li>Nuvola icons (GNU LGPL 2.1. license)</li>
+<li>NuoveXT icons (GPL license)</li>
+<li><a href="https://github.com/legacy-icons/famfamfam-silk">famfamfam silk icons</a> (Creative Commons Attribution 2.5 license)</li>
+<li><a href="https://github.com/gammasoft/fatcow">FatCow free-icons</a> (Creative Commons Attribution 3.0 license)</li>
+</ul>
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs-cline">License</h3>
+<div>
+<span class="red">RED+</span> is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+</div>
+
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr><p>&nbsp;</p>
 
 <div class="footer">
- <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<small>modified: 2025-November-18</small>&nbsp</span>
+ <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<small>modified: 2025-November-22</small>&nbsp</span>
 </div>
 
 </body>
