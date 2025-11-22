@@ -158,7 +158,7 @@ namespace RED.UI
 
                 // Extract any switches
                 int i = 1;
-                while (args[i].StartsWith("-"))
+                while (i < args.Length && args[i].StartsWith("-"))
                 {
                     if (args[i].ToLower() == "-autosearch")
                     {
@@ -169,13 +169,20 @@ namespace RED.UI
                 }
                 // Any remaining args are treated as a pathname
                 string path = string.Join(string.Empty, args).Replace("\"", string.Empty).Trim();
-                // add ending backslash
-                if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                if (path.Length > 0)
                 {
-                    path += Path.DirectorySeparatorChar.ToString();
-                }
+                    // add ending backslash
+                    if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                    {
+                        path += Path.DirectorySeparatorChar.ToString();
+                    }
 
-                RedConfig.Runtime.Volatile.LastUsedDirectory = path;
+                    RedConfig.Runtime.Volatile.LastUsedDirectory = path;
+                }
+                else
+                {
+                    AutoSearchOnStart = false;
+                }
             }
         }
 
