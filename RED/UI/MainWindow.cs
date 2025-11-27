@@ -888,6 +888,10 @@ namespace RED.UI
             {
                 Process.Start(RedConfig.Runtime.HelpFile);
             }
+            else
+            {
+                UiAssist.MsgBoxInfo($"Help File Not Found\r\n{RedConfig.Runtime.HelpFile}");
+            }
         }
 
         private void btnCopyDebugInfo_Click(object sender, EventArgs e)
@@ -1044,6 +1048,7 @@ namespace RED.UI
                 gbAdvancedExtras.Enabled = true;
                 btnResetConfig.Enabled = false;
             }
+            btnHelp.Enabled = File.Exists(RedConfig.Runtime.HelpFile);
         }
 
         private void ConfigRestoreWindowDetails()
