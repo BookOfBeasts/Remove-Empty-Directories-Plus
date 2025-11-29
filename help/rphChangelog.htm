@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="RED+ : Remove Empty Directories Plus Help">
+<meta name="author" content="Robert 'NotBob' Bookerby">
+<link rel="stylesheet" href="css/rphStyle.css">
+<title>RED+ Help</title>
+</head>
+<body>
+<div class="sidenav">
+ <div class="logo"><img src="img/logonav.png" alt="logo"></div>
+ <a href="rphOverview.htm" >Overview</a>
+ <a href="rphConfig.htm"   >Config File</a>
+ <a href="rphSettings.htm" >Settings</a>
+ <a href="rphFilters.htm"  >Filters</a>
+ <a href="rphSearching.htm">Searching</a>
+ <a href="rphCmdline.htm"  >Command Line</a>
+ <ul><li>Change Log</li></ul>
+</div>
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<div class="main narrow-body">
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3>Changelog</h3>
+<div class="changelog">
+<p>25.2.0.0   (<em>2025 November</em>)</p>
+<ul>
+<li>Improve command line parsing</li>
+<li>Updates to basic help</li>
+</ul>
+<p>25.1.0.0   (<em>2025 November</em>)</p>
+<ul>
+<li>Added basic help documentation (help\index.htm)<ul>
+<li>NOTE: Incomplete and very much a work-in-progress</li>
+</ul>
+</li>
+<li>Added microseconds to display of runtime after a search</li>
+<li>Disable search related buttons when not on search tab</li>
+<li>Added <em>-autosearch</em> command line switch</li>
+</ul>
+<p>25.0.1.0   (<em>2025 November</em>)  </p>
+<ul>
+<li>Fixed issue with Last Used Directory not being restored on program load</li>
+</ul>
+<p>25.0.0.0   (<em>2025 June</em>)  </p>
+<ul>
+<li>The 1st release of RED+, which is based on <a href="http://www.jonasjohn.de/">Jonas John&#39;s</a> RED 2.3.0 beta</li>
+<li>Completely rewrote the directory and file name matching routines allowing the use of an extended syntax for more sophisticated matches</li>
+<li>Added a new directory filter to allowing specifying that a directory is <strong>never</strong> to be treated as empty but still check any sub-directories</li>
+<li>Added a dedicated grid for the display &amp; editing of filter rules</li>
+<li>Tweaked the UI layout and some of the icons</li>
+<li>Settings load/save replaced with custom routine allowing truly portable use<ul>
+<li>The settings file has the same name as the executable but with an extension of &#39;.cfg&#39;</li>
+<li>If you want the settings saved to the %appdata% folder then delete the .cfg file and RED+ will prompt for the location next time it is run.</li>
+</ul>
+</li>
+<li>Added the foundations for translations using industry standard .po files</li>
+</ul>
+<p>Original RED  </p>
+<ul>
+<li>See <a href="https://github.com/hxseven/Remove-Empty-Directories/issues">original RED</a> for earlier releases</li>
+</ul>
+</div>
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr><p>&nbsp;</p>
+<div class="footer">
+ <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-November</span>&nbsp;</span>
+</div>
+</div></body>
+</html>

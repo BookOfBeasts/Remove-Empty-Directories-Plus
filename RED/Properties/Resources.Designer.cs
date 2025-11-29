@@ -61,7 +61,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-11-21T10:26:19
+        ///   Looks up a localized string similar to 2025-11-27T11:51:43
         ///.
         /// </summary>
         internal static string BuildTimeDebug {
@@ -71,7 +71,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-11-09T10:42:49
+        ///   Looks up a localized string similar to 2025-11-27T11:58:45
         ///.
         /// </summary>
         internal static string BuildTimeRelease {
@@ -81,7 +81,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Empty Directories Plus (RED+) is based on Jonas John&apos;s original Remove Empty Directores (RED)
+        ///   Looks up a localized string similar to Remove Empty Directories Plus (RED+) is based on Jonas John&apos;s original Remove Empty Directories (RED)
         ///
         ///HINTS &amp; FAQ
         ///
@@ -91,7 +91,7 @@ namespace RED.Properties {
         ///    to &quot;Bypass recycle bin and directly delete dirs&quot; and 
         ///    &quot;Pause between each deletion&quot; to zero. This should give you a great speed 
         ///    improvement but you will lose the recycle bin safety net and you won&apos;t see 
-        ///    the progress. I also m [rest of string was truncated]&quot;;.
+        ///    the progress. I also  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string help_filters {
             get {

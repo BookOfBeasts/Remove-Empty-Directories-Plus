@@ -808,7 +808,7 @@ namespace RED.UI
 
         private void tcMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pnlActionsSearch.Enabled = (tcMain.SelectedTab == tabSearch);
+            pnlActionsSearch.Enabled = (tcMain.SelectedTab == tabSearch || RedConfig.Options.NoSTAD);
 
             if (tcMain.SelectedTab == tabSettings)
             {

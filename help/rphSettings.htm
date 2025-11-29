@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="RED+ : Remove Empty Directories Plus Help">
+<meta name="author" content="Robert 'NotBob' Bookerby">
+<link rel="stylesheet" href="css/rphStyle.css">
+<title>RED+ Help</title>
+</head>
+<body>
+<div class="sidenav">
+ <div class="logo"><img src="img/logonav.png" alt="logo"></div>
+ <a href="rphOverview.htm" >Overview</a>
+ <a href="rphConfig.htm"   >Config File</a>
+ <ul><li>Settings</li></ul>
+ <a href="rphFilters.htm"  >Filters</a>
+ <a href="rphSearching.htm">Searching</a>
+ <a href="rphCmdline.htm"  >Command Line</a>
+ <a href="rphCredits.htm"  >Credits, License</a>
+ <a href="rphChangelog.htm">Change Log</a>
+</div>
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<div class="main narrow-body">
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr>
+<h3 id="rs_opts1">Settings</h3>
+<div>
+<div id="opts1">
+<figure><img class="imgx" src="img/screen-S01.png"><figcaption>Settings</figcaption></figure>
+</div>
+<div>
+<ul>
+<li>
+<span class="sx">Directories With Empty Files Will Be Considered Empty</span>
+<div>If a directory contains nothing other than empty files it will be treated as an empty directory.</div>
+</li>
+<li>
+<span class="sx">Ignore System Directories</span>
+<div>If a directory is has the SYSTEM attribute it will <b>not</b> be processed. Any Sub-Directories will also <b>not</b> be processed.</div>
+</li>
+<li>
+<span class="sx">Ignore Hidden Directories</span>
+<div>If a directory is has the HIDDEN attribute it will <b>not</b> be processed. Any Sub-Directories will also <b>not</b> be processed.</div>
+</li>
+<li><span class="sx">Hide Errors During Deletion</span></li>
+<li><span class="sx">Hide Error During Search</span></li>
+<li>
+<span class="sx">Hide Ignored Directories</span>
+<div>Directories matched by the <em>Directories: Ignored</em> filter will <b>not</b> be shown in the treeview results.</div>
+<div>If not set then these directories show in the results as protected.</div>
+</li>
+<li>
+<span class="sx">Automatically Protect the Starting Directory</span>
+<div>Prevents the directory specified for the search from being deleted, even if it is empty.</div>
+</li>
+<li><span class="sx">Fast Mode</span></li>
+<li><span class="sx">Detect Paths in the Clipboard</span></li>
+</ul>
+<ul>
+<li><span class="sx">How Should Empty Directories Be Deleted?</span>
+<div>Specifies how directories and contents should be deleted.</div>
+</li>
+</ul>
+</div>
+
+<div id="opts1a">
+<figure><img class="imgx" src="img/screen-S02.png"><figcaption>Advanced Settings</figcaption></figure>
+</div>
+</div>
+<!-- ======= ======= ======= ======= ======= ======= ======= -->
+<hr><p>&nbsp;</p>
+<div class="footer">
+ <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-November</span>&nbsp;</span>
+</div>
+</div></body>
+</html>

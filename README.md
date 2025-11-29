@@ -56,6 +56,11 @@ In July 2024 Robert 'NotBob' Bookerby created RED+ using the core code of RED.
 In June 2025 RED+ was made available on GitHub
 
 ## Changelog
+25.2.0.0   (*2025 November*)
+- Improve command line parsing
+- Updates to basic help
+
+
 25.1.0.0   (*2025 November*)
 - Added basic help documentation (help\index.htm)
 	- NOTE: Incomplete and very much a work-in-progress
