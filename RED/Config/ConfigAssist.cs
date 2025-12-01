@@ -103,36 +103,31 @@ namespace NotBob.Config
                 config.PopulateRuntime(filename, Application.ExecutablePath, Application.ProductName, Application.ProductVersion);
                 if (createConfig && !string.IsNullOrWhiteSpace(config.Runtime.ConfigFilename) && !config.IsReadOnly)
                 {
-                    ConfigSave(config, force: true);
+                    ConfigSave(config);
                 }
                 config.DataIsDirty = false;
             }
         }
 
-        internal static void ConfigSave(RedConfiguration config, bool force = false)
+        private static void ConfigSave(RedConfiguration config)
         {
             try
             {
                 config.CreatedBy = config.Runtime.CreatedBy;
 
-                bool saveRequired = config.DataIsDirty || force;
-                if (saveRequired && !force)
+                if (!config.IsReadOnly)
                 {
-                    saveRequired = ConfigSavePrompt(config, saveRequired);
-                }
-
-                if (config.DataIsDirty || force)
-                {
-                    if (!config.IsReadOnly)
+                    string cfgFolder = Path.GetDirectoryName(config.Runtime.ConfigFilename);
+                    if ((!Directory.Exists(cfgFolder)))
                     {
-                        string cfgFolder = Path.GetDirectoryName(config.Runtime.ConfigFilename);
-                        if ((!Directory.Exists(cfgFolder)))
-                        {
-                            Directory.CreateDirectory(cfgFolder);
-                        }
-                        ConfigAssist.Save(config, config.Runtime.ConfigFilename);
-                        config.DataIsDirty = false;
+                        Directory.CreateDirectory(cfgFolder);
                     }
+                    ConfigAssist.Save(config, config.Runtime.ConfigFilename);
+                    config.DataIsDirty = false;
+                }
+                else
+                {
+                    UiAssist.MsgBoxError("Config File is READ ONLY and cannot be saved.");
                 }
             }
             catch (Exception ex)
@@ -146,11 +141,17 @@ namespace NotBob.Config
         internal static void ConfigSaveWithPrompt(RedConfiguration config, bool ask = false)
         {
             bool saveRequired = config.DataIsDirty && !config.IsReadOnly;
-            if (ask)
+            if (saveRequired)
             {
-                saveRequired = ConfigAssist.ConfigSavePrompt(config, saveRequired);
+                if (ask)
+                {
+                    saveRequired = ConfigAssist.ConfigSavePrompt(config, saveRequired);
+                }
+                if (saveRequired)
+                {
+                    ConfigAssist.ConfigSave(config);
+                }
             }
-            ConfigAssist.ConfigSave(config, saveRequired);
         }
 
         private static bool ConfigSavePrompt(RedConfiguration config, bool saveRequired)

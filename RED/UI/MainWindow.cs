@@ -417,8 +417,11 @@ namespace RED.UI
             btnSearch.Enabled = true;
             btnDelete.Enabled = false;
 
-            // Increase deletion statistics (shown in about tab)
-            RedConfig.Runtime.Volatile.CountOfDeletions += e.DeletedFolderCount;
+            // Increase deletion statistics (ignore overflows).
+            unchecked
+            {
+                RedConfig.Runtime.Volatile.CountOfDeletions += e.DeletedFolderCount;
+            }
             lblRedStats.Text = string.Format("{0}: {1}", TXT.Words.DeletedSoFar, RedConfig.Volatile.CountOfDeletions + RedConfig.Runtime.Volatile.CountOfDeletions);
 
             TreeMgr.OnDeletionProcessFinished();
@@ -767,7 +770,8 @@ namespace RED.UI
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ConfigUpdateAndSave(ModifierKeys.HasFlag(Keys.Alt));
+            bool ask = cbSavePrompt.Checked || ModifierKeys.HasFlag(Keys.Alt);
+            ConfigUpdateAndSave(ask);
         }
 
         private void MainWindow_Shown(object sender, EventArgs e)
