@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -21,13 +21,17 @@ namespace RED.Helper
             try
             {
                 Assembly asm = Assembly.GetExecutingAssembly();
-                info.Append(string.Format("Product Version={0}", asm.GetName().Version.ToString()));
                 FileVersionInfo vi = FileVersionInfo.GetVersionInfo(asm.Location);
-                info.AppendLine(string.Format(", File Version={0}", vi.FileVersion.ToString()));
+                info.Append(string.Format("File Version={0}", vi.FileVersion.ToString()));
+                info.Append(string.Format(", Product Version={0}", asm.GetName().Version.ToString()));
+#if DEBUG
+                info.Append(" (DBUG)");
+#endif
+                info.AppendLine();
             }
             catch (Exception ex)
             {
-                info.AppendLine("Failed (" + ex.Message + ")");
+                info.AppendLine("Version Failed (" + ex.Message + ")");
             }
 
             info.Append("- Operating System: ");
@@ -37,7 +41,7 @@ namespace RED.Helper
             }
             catch (Exception ex)
             {
-                info.AppendLine("Failed (" + ex.Message + ")");
+                info.AppendLine("OSVersion Failed (" + ex.Message + ")");
             }
 
             info.Append("- Processor architecture: ");
@@ -47,7 +51,7 @@ namespace RED.Helper
             }
             catch (Exception ex)
             {
-                info.AppendLine("Failed (" + ex.Message + ")");
+                info.AppendLine("Architecture Failed (" + ex.Message + ")");
             }
 
             info.Append("- Is Administrator: ");
@@ -58,7 +62,7 @@ namespace RED.Helper
             }
             catch (Exception ex)
             {
-                info.AppendLine("Failed (" + ex.Message + ")");
+                info.AppendLine("IsAdmin Failed (" + ex.Message + ")");
             }
 
             info.AppendLine("");
@@ -88,6 +92,9 @@ namespace RED.Helper
                 info.AppendLine(string.Format(" Remember Window Details: {0}", RedConfig.Options.RememberWindowDetails));
                 info.AppendLine(string.Format(" Remember Last Used Dir : {0}", RedConfig.Options.RememberLastUsedDirectory));
                 info.AppendLine(string.Format(" Remember Deletion Stats: {0}", RedConfig.Options.RememberDeletionStats));
+                info.AppendLine(string.Format(" Save Prompt: {0}", RedConfig.Options.SavePrompt));
+                info.AppendLine(string.Format(" NoSTAD: {0}", RedConfig.Options.NoSTAD));
+                info.AppendLine(string.Format(" Language: {0}", RedConfig.Options.Language));
 
                 AppendFilterInfo(info, "Ignored Files", RedConfig.Filters.FilesToIgnore);
                 AppendFilterInfo(info, "Ignored Directories", RedConfig.Filters.DirectoriesToIgnore);

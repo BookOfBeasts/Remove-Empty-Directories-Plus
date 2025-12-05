@@ -905,11 +905,11 @@ namespace RED.UI
                 RedDebug dbug = new RedDebug();
                 string info = dbug.GatherDebugInfo(RedConfig);
                 Clipboard.SetText(info, TextDataFormat.Text);
-                UiAssist.MsgBoxInfo(this, string.Format("{0}{1}{2}", TXT.Translate("Copied this text to your clipboard:"), RedGetText.CrLf2, info));
+                UiAssist.MsgBoxInfo(this, TXT.Translate("Copied Debug Information to clipboard"));
             }
             catch (Exception ex)
             {
-                UiAssist.MsgBoxException(this, TXT.Translate("Could not copy the debug info into your clipboard"), ex);
+                UiAssist.MsgBoxException(this, TXT.Translate("Could not copy the debug information to clipboard"), ex);
             }
         }
 
