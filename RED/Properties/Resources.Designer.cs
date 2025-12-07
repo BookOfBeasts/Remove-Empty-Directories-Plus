@@ -61,7 +61,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-11-27T11:51:43
+        ///   Looks up a localized string similar to 2025-12-03T15:40:33
         ///.
         /// </summary>
         internal static string BuildTimeDebug {
@@ -71,7 +71,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-11-27T11:58:45
+        ///   Looks up a localized string similar to 2025-12-01T13:29:12
         ///.
         /// </summary>
         internal static string BuildTimeRelease {
@@ -525,6 +525,16 @@ namespace RED.Properties {
         internal static System.Drawing.Bitmap x16_search_folder {
             get {
                 object obj = ResourceManager.GetObject("x16_search_folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x16_Shield1 {
+            get {
+                object obj = ResourceManager.GetObject("x16_Shield1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

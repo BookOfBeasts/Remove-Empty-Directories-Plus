@@ -98,7 +98,7 @@ namespace RED.UI
             this.lbMaxDepth1 = new System.Windows.Forms.Label();
             this.nuInfiniteLoopDetectionCount = new System.Windows.Forms.NumericUpDown();
             this.gbExplorerIntegration = new System.Windows.Forms.GroupBox();
-            this.lblReqAdmin = new System.Windows.Forms.Label();
+            this.lblExplorerIntegrationInfo = new System.Windows.Forms.Label();
             this.btnExplorerRemove = new System.Windows.Forms.Button();
             this.btnExplorerIntegrate = new System.Windows.Forms.Button();
             this.lbExplorerIntegration1 = new System.Windows.Forms.Label();
@@ -972,7 +972,7 @@ namespace RED.UI
             // 
             // gbExplorerIntegration
             // 
-            this.gbExplorerIntegration.Controls.Add(this.lblReqAdmin);
+            this.gbExplorerIntegration.Controls.Add(this.lblExplorerIntegrationInfo);
             this.gbExplorerIntegration.Controls.Add(this.btnExplorerRemove);
             this.gbExplorerIntegration.Controls.Add(this.btnExplorerIntegrate);
             this.gbExplorerIntegration.Controls.Add(this.lbExplorerIntegration1);
@@ -984,15 +984,15 @@ namespace RED.UI
             this.gbExplorerIntegration.TabStop = false;
             this.gbExplorerIntegration.Text = "Windows Explorer Integration";
             // 
-            // lblReqAdmin
+            // lblExplorerIntegrationInfo
             // 
-            this.lblReqAdmin.AutoSize = true;
-            this.lblReqAdmin.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lblReqAdmin.Location = new System.Drawing.Point(16, 49);
-            this.lblReqAdmin.Name = "lblReqAdmin";
-            this.lblReqAdmin.Size = new System.Drawing.Size(314, 13);
-            this.lblReqAdmin.TabIndex = 1;
-            this.lblReqAdmin.Text = "You need to start the application as an Admin user to change this";
+            this.lblExplorerIntegrationInfo.AutoSize = true;
+            this.lblExplorerIntegrationInfo.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lblExplorerIntegrationInfo.Location = new System.Drawing.Point(16, 49);
+            this.lblExplorerIntegrationInfo.Name = "lblExplorerIntegrationInfo";
+            this.lblExplorerIntegrationInfo.Size = new System.Drawing.Size(124, 13);
+            this.lblExplorerIntegrationInfo.TabIndex = 1;
+            this.lblExplorerIntegrationInfo.Text = "This is a Per User setting";
             // 
             // btnExplorerRemove
             // 
@@ -1002,6 +1002,7 @@ namespace RED.UI
             this.btnExplorerRemove.Size = new System.Drawing.Size(119, 23);
             this.btnExplorerRemove.TabIndex = 3;
             this.btnExplorerRemove.Text = "Uninstall";
+            this.btnExplorerRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExplorerRemove.UseVisualStyleBackColor = true;
             this.btnExplorerRemove.Click += new System.EventHandler(this.btnExplorerRemove_Click);
             // 
@@ -1021,9 +1022,9 @@ namespace RED.UI
             this.lbExplorerIntegration1.AutoSize = true;
             this.lbExplorerIntegration1.Location = new System.Drawing.Point(16, 24);
             this.lbExplorerIntegration1.Name = "lbExplorerIntegration1";
-            this.lbExplorerIntegration1.Size = new System.Drawing.Size(268, 13);
+            this.lbExplorerIntegration1.Size = new System.Drawing.Size(274, 13);
             this.lbExplorerIntegration1.TabIndex = 0;
-            this.lbExplorerIntegration1.Text = "Integrate RED into the Windows Explorer context menu";
+            this.lbExplorerIntegration1.Text = "Integrate RED+ into the Windows Explorer context menu";
             // 
             // gbAdvancedExtras
             // 
@@ -1745,7 +1746,7 @@ namespace RED.UI
         private System.Windows.Forms.Label lbMaxDepth1;
         private System.Windows.Forms.NumericUpDown nuInfiniteLoopDetectionCount;
         private System.Windows.Forms.GroupBox gbExplorerIntegration;
-        private System.Windows.Forms.Label lblReqAdmin;
+        private System.Windows.Forms.Label lblExplorerIntegrationInfo;
         private System.Windows.Forms.Button btnExplorerRemove;
         private System.Windows.Forms.Button btnExplorerIntegrate;
         private System.Windows.Forms.Label lbExplorerIntegration1;

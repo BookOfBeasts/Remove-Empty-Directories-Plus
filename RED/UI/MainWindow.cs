@@ -92,7 +92,12 @@ namespace RED.UI
             lbNotBobInfoBuild.Text = string.Format("Build Time: {0} {1:MMMM, yyyy} @ {1:HH:mm}", buildTime.Day.ToOrdinal(), buildTime);
             uxToolTips.SetToolTip(picAboutLogo, RedConfig.Filename);
 
-            AdminCheck();
+            if (SystemFunctions.IsAdmin())
+            {
+                Text += string.Format(" ({0})", TXT.Words.AdminMode);
+            }
+
+            ExplorerIntegrationCheck();
 
             UpdateContextMenu(cmTreeview, false);
             btnDelete.Enabled = false;
@@ -116,31 +121,56 @@ namespace RED.UI
         }
 
         /// <summary>
-        /// Check if we were started with admin rights
+        /// Check if RED+ has been added to the Explorer Context menu
         /// </summary>
-        private void AdminCheck()
+        private void ExplorerIntegrationCheck()
         {
-            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            gbExplorerIntegration.Enabled = true;
+            lblExplorerIntegrationInfo.Text = TXT.Translate("This is a Per User setting");
 
-            if (principal.IsInRole(WindowsBuiltInRole.Administrator))
+            int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer();
+
+            switch (isIntegrated)
             {
-                bool isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer();
-
-                btnExplorerIntegrate.Enabled = !isIntegrated;
-                btnExplorerRemove.Enabled = isIntegrated;
-
-                Text += string.Format(" ({0})", TXT.Words.AdminMode);
-
-                lblReqAdmin.ForeColor = Color.DarkGray;
-            }
-            else
-            {
-                gbExplorerIntegration.Enabled = false;
-
-                // Highlight admin info text bold
-                // Note: Changed it from red to bold because red looked like an error
-                // but actually it's just an info message
-                lblReqAdmin.Font = new Font(DefaultFont, FontStyle.Bold);
+                case 2:
+                    // Integrated with HKCU method
+                    btnExplorerIntegrate.Enabled = false;
+                    btnExplorerRemove.Enabled = true;
+                    break;
+                case 1:
+                    // Integrated with Legacy HKCR method. Requires Admin rights
+                    btnExplorerRemove.Image = Properties.Resources.x16_Shield1;
+                    btnExplorerIntegrate.Enabled = false;
+                    btnExplorerRemove.Enabled = true;
+                    lblExplorerIntegrationInfo.Text = TXT.Translate("You need to start the application as an Admin user to change this");
+                    if (SystemFunctions.IsAdmin())
+                    {
+                        lblExplorerIntegrationInfo.ForeColor = Color.DarkGray;
+                    }
+                    else
+                    {
+                        gbExplorerIntegration.Enabled = false;
+                        lblExplorerIntegrationInfo.Font = new Font(DefaultFont, FontStyle.Bold);
+                    }
+                    break;
+                case -1:
+                    // Error determining integration
+                    btnExplorerIntegrate.Enabled = true;
+                    btnExplorerRemove.Enabled = false;
+                    lblExplorerIntegrationInfo.Visible = true;
+                    lblExplorerIntegrationInfo.Text = TXT.Translate("Unable to determine explorer integration status");
+                    break;
+                default:
+                    // Not currently integrated
+                    btnExplorerIntegrate.Enabled = true;
+                    btnExplorerRemove.Enabled = false;
+                    if (RedAssist.IsDrivePathRemovable(Application.ExecutablePath))
+                    {
+                        gbExplorerIntegration.Enabled = false;
+                        lblExplorerIntegrationInfo.Visible = true;
+                        lblExplorerIntegrationInfo.Text = TXT.Translate("Running from a removable drive. Cannot integrate");
+                    }
+                    break;
             }
         }
 
@@ -418,10 +448,7 @@ namespace RED.UI
             btnDelete.Enabled = false;
 
             // Increase deletion statistics (ignore overflows).
-            unchecked
-            {
-                RedConfig.Runtime.Volatile.CountOfDeletions += e.DeletedFolderCount;
-            }
+            unchecked { RedConfig.Runtime.Volatile.CountOfDeletions += e.DeletedFolderCount; }
             lblRedStats.Text = string.Format("{0}: {1}", TXT.Words.DeletedSoFar, RedConfig.Volatile.CountOfDeletions + RedConfig.Runtime.Volatile.CountOfDeletions);
 
             TreeMgr.OnDeletionProcessFinished();
@@ -812,7 +839,7 @@ namespace RED.UI
 
         private void tcMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pnlActionsSearch.Enabled = (tcMain.SelectedTab == tabSearch || RedConfig.Options.NoSTAD);
+            //pnlActionsSearch.Enabled = (tcMain.SelectedTab == tabSearch);
 
             if (tcMain.SelectedTab == tabSettings)
             {
@@ -854,16 +881,17 @@ namespace RED.UI
 
         private void btnExplorerIntegrate_Click(object sender, EventArgs e)
         {
-            SystemFunctions.AddOrRemoveRegKey(true);
+            SystemFunctions.ExplorerIntegrationAddOrRemove(true);
             btnExplorerRemove.Enabled = true;
             btnExplorerIntegrate.Enabled = false;
         }
 
         private void btnExplorerRemove_Click(object sender, EventArgs e)
         {
-            SystemFunctions.AddOrRemoveRegKey(false);
+            SystemFunctions.ExplorerIntegrationAddOrRemove(false);
             btnExplorerRemove.Enabled = false;
             btnExplorerIntegrate.Enabled = true;
+            lblExplorerIntegrationInfo.Text = TXT.Translate("This is a Per User setting");
         }
 
         private void linkLabelProjectHomepage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1116,7 +1144,7 @@ namespace RED.UI
                 RedConfig.Options.RememberDeletionStats = cbRememberDeletionStats.Checked;
                 if (RedConfig.Options.RememberDeletionStats)
                 {
-                    RedConfig.Volatile.CountOfDeletions += RedConfig.Runtime.Volatile.CountOfDeletions;
+                    unchecked { RedConfig.Volatile.CountOfDeletions += RedConfig.Runtime.Volatile.CountOfDeletions; }
                 }
 
                 // Save UI details if required

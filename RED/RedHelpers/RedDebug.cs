@@ -93,7 +93,6 @@ namespace RED.Helper
                 info.AppendLine(string.Format(" Remember Last Used Dir : {0}", RedConfig.Options.RememberLastUsedDirectory));
                 info.AppendLine(string.Format(" Remember Deletion Stats: {0}", RedConfig.Options.RememberDeletionStats));
                 info.AppendLine(string.Format(" Save Prompt: {0}", RedConfig.Options.SavePrompt));
-                info.AppendLine(string.Format(" NoSTAD: {0}", RedConfig.Options.NoSTAD));
                 info.AppendLine(string.Format(" Language: {0}", RedConfig.Options.Language));
 
                 AppendFilterInfo(info, "Ignored Files", RedConfig.Filters.FilesToIgnore);

@@ -73,9 +73,6 @@ namespace RED.Config
         public bool RememberDeletionStats { get { return _RememberDeletionStats; } set { SetField(ref _RememberDeletionStats, value); } }
         private bool _RememberDeletionStats;
 
-        public bool NoSTAD { get { return _NoSTAD; } set { SetField(ref _NoSTAD, value); } }
-        private bool _NoSTAD;
-
         [XmlIgnore]
         public override bool DataIsDirty
         {
@@ -102,7 +99,6 @@ namespace RED.Config
             RememberWindowDetails = false;
             RememberLastUsedDirectory = false;
             RememberDeletionStats = false;
-            NoSTAD = false;
         }
     }
 }
