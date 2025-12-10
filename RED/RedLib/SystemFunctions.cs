@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Security.Permissions;
 using System.Security.Principal;
+using System.Text;
 using System.Windows.Forms;
 using Alphaleonis.Win32.Filesystem;
 using Microsoft.VisualBasic.FileIO;
@@ -284,34 +285,39 @@ namespace RED
             return isIntegrated;
         }
 
-        internal static void ExplorerIntegrationAddOrRemove(bool add)
+        internal static void ExplorerIntegrationAdd(bool autosearch)
         {
             try
             {
-                if (add)
+                // Integrate with HKCU method
+                ExplorerIntegrationAdd(regKeyNameShell + @"\" + regSubkeyRed, "%1", autosearch);
+                ExplorerIntegrationAdd(regKeyNameBgShl + @"\" + regSubkeyRed, "%V", autosearch);
+            }
+            catch (Exception ex)
+            {
+                UiAssist.MsgBoxError(TXT.Words.Error + RedGetText.CrLf1 + TXT.Translate("Could not change registry settings:") + RedGetText.CrLf2 + ex.ToString());
+            }
+        }
+
+        internal static void ExplorerIntegrationRemove()
+        {
+            try
+            {
+                int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer();
+                switch (isIntegrated)
                 {
-                    // Integrate with HKCU method
-                    ExplorerIntegrationAdd(regKeyNameShell + @"\" + regSubkeyRed, "%1");
-                    ExplorerIntegrationAdd(regKeyNameBgShl + @"\" + regSubkeyRed, "%V");
-                }
-                else
-                {
-                    int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer();
-                    switch (isIntegrated)
-                    {
-                        case 1:
-                            // Integrated with Legacy HKCR method. Requires Admin rights
-                            ExplorerIntegrationRemove(Registry.ClassesRoot, regLegacyKeyName, regLegacySubKeyRed);
-                            break;
-                        case 2:
-                            // Integrated with HKCU method
-                            ExplorerIntegrationRemove(Registry.CurrentUser, regKeyNameShell, regSubkeyRed);
-                            ExplorerIntegrationRemove(Registry.CurrentUser, regKeyNameBgShl, regSubkeyRed);
-                            break;
-                        default:
-                            // Not integrated or unable to determine
-                            break;
-                    }
+                    case 1:
+                        // Integrated with Legacy HKCR method. Requires Admin rights
+                        ExplorerIntegrationRemove(Registry.ClassesRoot, regLegacyKeyName, regLegacySubKeyRed);
+                        break;
+                    case 2:
+                        // Integrated with HKCU method
+                        ExplorerIntegrationRemove(Registry.CurrentUser, regKeyNameShell, regSubkeyRed);
+                        ExplorerIntegrationRemove(Registry.CurrentUser, regKeyNameBgShl, regSubkeyRed);
+                        break;
+                    default:
+                        // Not integrated or unable to determine
+                        break;
                 }
             }
             catch (Exception ex)
@@ -320,7 +326,7 @@ namespace RED
             }
         }
 
-        internal static void ExplorerIntegrationAdd(string keyname, string placeholder)
+        private static void ExplorerIntegrationAdd(string keyname, string placeholder, bool autosearch)
         {
             using (var reg = Registry.CurrentUser.CreateSubKey(keyname))
             {
@@ -333,14 +339,19 @@ namespace RED
                     {
                         if (regcmd != null)
                         {
-                            regcmd.SetValue("", string.Format("{0} {1}", Application.ExecutablePath, RedAssist.DQuote(placeholder)));
+                            //string cmd = string.Format("{0} {1} {2}", Application.ExecutablePath, autosearch ? "-autosearch" : "", RedAssist.DQuote(placeholder)));
+                            StringBuilder cmd = new StringBuilder();
+                            cmd.Append(RedAssist.DQuote(Application.ExecutablePath));
+                            cmd.Append(autosearch ? " -autosearch " : " "); //space before and after
+                            cmd.Append(RedAssist.DQuote(placeholder));
+                            regcmd.SetValue("", cmd.ToString());
                         }
                     }
                 }
             }
         }
 
-        internal static void ExplorerIntegrationRemove(RegistryKey regKey, string keyname, string subkeyname)
+        private static void ExplorerIntegrationRemove(RegistryKey regKey, string keyname, string subkeyname)
         {
             using (var reg = regKey.OpenSubKey(keyname, writable: true))
             {

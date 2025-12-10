@@ -98,6 +98,7 @@ namespace RED.UI
             this.lbMaxDepth1 = new System.Windows.Forms.Label();
             this.nuInfiniteLoopDetectionCount = new System.Windows.Forms.NumericUpDown();
             this.gbExplorerIntegration = new System.Windows.Forms.GroupBox();
+            this.chkExplorerIntegrateAutoSearch = new System.Windows.Forms.CheckBox();
             this.lblExplorerIntegrationInfo = new System.Windows.Forms.Label();
             this.btnExplorerRemove = new System.Windows.Forms.Button();
             this.btnExplorerIntegrate = new System.Windows.Forms.Button();
@@ -972,6 +973,7 @@ namespace RED.UI
             // 
             // gbExplorerIntegration
             // 
+            this.gbExplorerIntegration.Controls.Add(this.chkExplorerIntegrateAutoSearch);
             this.gbExplorerIntegration.Controls.Add(this.lblExplorerIntegrationInfo);
             this.gbExplorerIntegration.Controls.Add(this.btnExplorerRemove);
             this.gbExplorerIntegration.Controls.Add(this.btnExplorerIntegrate);
@@ -983,6 +985,16 @@ namespace RED.UI
             this.gbExplorerIntegration.TabIndex = 2;
             this.gbExplorerIntegration.TabStop = false;
             this.gbExplorerIntegration.Text = "Windows Explorer Integration";
+            // 
+            // chkExplorerIntegrateAutoSearch
+            // 
+            this.chkExplorerIntegrateAutoSearch.AutoSize = true;
+            this.chkExplorerIntegrateAutoSearch.Location = new System.Drawing.Point(378, 48);
+            this.chkExplorerIntegrateAutoSearch.Name = "chkExplorerIntegrateAutoSearch";
+            this.chkExplorerIntegrateAutoSearch.Size = new System.Drawing.Size(85, 17);
+            this.chkExplorerIntegrateAutoSearch.TabIndex = 2;
+            this.chkExplorerIntegrateAutoSearch.Text = "Auto Search";
+            this.chkExplorerIntegrateAutoSearch.UseVisualStyleBackColor = true;
             // 
             // lblExplorerIntegrationInfo
             // 
@@ -1000,7 +1012,7 @@ namespace RED.UI
             this.btnExplorerRemove.Location = new System.Drawing.Point(499, 24);
             this.btnExplorerRemove.Name = "btnExplorerRemove";
             this.btnExplorerRemove.Size = new System.Drawing.Size(119, 23);
-            this.btnExplorerRemove.TabIndex = 3;
+            this.btnExplorerRemove.TabIndex = 4;
             this.btnExplorerRemove.Text = "Uninstall";
             this.btnExplorerRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExplorerRemove.UseVisualStyleBackColor = true;
@@ -1012,7 +1024,7 @@ namespace RED.UI
             this.btnExplorerIntegrate.Location = new System.Drawing.Point(374, 24);
             this.btnExplorerIntegrate.Name = "btnExplorerIntegrate";
             this.btnExplorerIntegrate.Size = new System.Drawing.Size(119, 23);
-            this.btnExplorerIntegrate.TabIndex = 2;
+            this.btnExplorerIntegrate.TabIndex = 3;
             this.btnExplorerIntegrate.Text = "Install";
             this.btnExplorerIntegrate.UseVisualStyleBackColor = true;
             this.btnExplorerIntegrate.Click += new System.EventHandler(this.btnExplorerIntegrate_Click);
@@ -1778,6 +1790,7 @@ namespace RED.UI
         private System.Windows.Forms.Button btnResetFilters;
         private System.Windows.Forms.Panel pnlActionsSearch;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.CheckBox chkExplorerIntegrateAutoSearch;
     }
 }
 

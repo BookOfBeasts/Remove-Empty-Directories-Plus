@@ -142,7 +142,7 @@ namespace RED.UI
                     btnExplorerRemove.Image = Properties.Resources.x16_Shield1;
                     btnExplorerIntegrate.Enabled = false;
                     btnExplorerRemove.Enabled = true;
-                    lblExplorerIntegrationInfo.Text = TXT.Translate("You need to start the application as an Admin user to change this");
+                    lblExplorerIntegrationInfo.Text = TXT.Translate("Start the application as an Admin user to change this");
                     if (SystemFunctions.IsAdmin())
                     {
                         lblExplorerIntegrationInfo.ForeColor = Color.DarkGray;
@@ -172,6 +172,8 @@ namespace RED.UI
                     }
                     break;
             }
+            chkExplorerIntegrateAutoSearch.Enabled = btnExplorerIntegrate.Enabled;
+            chkExplorerIntegrateAutoSearch.Visible = chkExplorerIntegrateAutoSearch.Enabled;
         }
 
         /// <summary>
@@ -881,37 +883,34 @@ namespace RED.UI
 
         private void btnExplorerIntegrate_Click(object sender, EventArgs e)
         {
-            SystemFunctions.ExplorerIntegrationAddOrRemove(true);
-            btnExplorerRemove.Enabled = true;
-            btnExplorerIntegrate.Enabled = false;
+            SystemFunctions.ExplorerIntegrationAdd(chkExplorerIntegrateAutoSearch.Checked);
+            ExplorerIntegrationCheck();
         }
 
         private void btnExplorerRemove_Click(object sender, EventArgs e)
         {
-            SystemFunctions.ExplorerIntegrationAddOrRemove(false);
-            btnExplorerRemove.Enabled = false;
-            btnExplorerIntegrate.Enabled = true;
-            lblExplorerIntegrationInfo.Text = TXT.Translate("This is a Per User setting");
+            SystemFunctions.ExplorerIntegrationRemove();
+            ExplorerIntegrationCheck();
         }
 
         private void linkLabelProjectHomepage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus");
+            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/");
         }
 
         private void linkLabelJonasJohnRed_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/hxseven/Remove-Empty-Directories");
+            Process.Start("https://github.com/hxseven/Remove-Empty-Directories/");
         }
 
         private void linkLabelCheckForUpdates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus");
+            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/releases/");
         }
 
         private void linkLabelFeedback_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/issues");
+            Process.Start("https://github.com/BookOfBeasts/Remove-Empty-Directories-Plus/issues/");
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
