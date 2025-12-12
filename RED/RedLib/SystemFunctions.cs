@@ -261,28 +261,55 @@ namespace RED
         /// Check for the registry key
         /// </summary>
         /// <returns>0 = No, 1 = HKCR (Legacy), 2 = HKCU</returns>
-        public static int IsRegKeyIntegratedIntoWindowsExplorer()
+        public static int IsRegKeyIntegratedIntoWindowsExplorer(out string command)
         {
-            int isIntegrated = 0;
+            int integrationMethod = 0;
+            command = "";
             try
             {
-                using (var reg = Registry.ClassesRoot.OpenSubKey(regLegacyKeyName + @"\" + regLegacySubKeyRed, writable: false))
+                using (var reg1 = Registry.ClassesRoot.OpenSubKey(regLegacyKeyName + @"\" + regLegacySubKeyRed, writable: false))
                 {
-                    isIntegrated = reg != null ? 1 : 0;
+                    integrationMethod = reg1 != null ? 1 : 0;
+                    command = GetExplorerIntegrationCommand(reg1);
                 }
-                if (isIntegrated == 0)
+
+                if (integrationMethod == 0)
                 {
-                    using (var reg = Registry.CurrentUser.OpenSubKey(regKeyNameShell + @"\" + regSubkeyRed, writable: false))
+                    using (var reg2 = Registry.CurrentUser.OpenSubKey(regKeyNameShell + @"\" + regSubkeyRed, writable: false))
                     {
-                        isIntegrated = reg != null ? 2 : 0;
+                        integrationMethod = reg2 != null ? 2 : 0;
+                        command = GetExplorerIntegrationCommand(reg2);
                     }
                 }
             }
             catch
             {
-                isIntegrated = -1;
+                integrationMethod = -1;
             }
-            return isIntegrated;
+            return integrationMethod;
+        }
+
+        private static string GetExplorerIntegrationCommand(RegistryKey reg)
+        {
+            string command = "";
+            try
+            {
+                if (reg != null)
+                {
+                    if (reg.SubKeyCount > 0)
+                    {
+                        using (var regcmd = reg.OpenSubKey("command"))
+                        {
+                            if (regcmd != null)
+                            {
+                                command = regcmd.GetValue("").ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch { }
+            return command;
         }
 
         internal static void ExplorerIntegrationAdd(bool autosearch)
@@ -303,7 +330,8 @@ namespace RED
         {
             try
             {
-                int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer();
+                string command;
+                int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer(out command);
                 switch (isIntegrated)
                 {
                     case 1:
@@ -332,7 +360,11 @@ namespace RED
             {
                 if (reg != null)
                 {
-                    reg.SetValue("MUIVerb", TXT.Red.Title);
+                    string muiverb = TXT.Red.Title;
+#if DEBUG
+                    muiverb += " (DBUG)";
+#endif
+                    reg.SetValue("MUIVerb", muiverb);
                     reg.SetValue("Icon", Application.ExecutablePath + ",0");
                     //reg.SetValue("Position", "Bottom");
                     using (RegistryKey regcmd = Registry.CurrentUser.CreateSubKey(keyname + @"\command"))
