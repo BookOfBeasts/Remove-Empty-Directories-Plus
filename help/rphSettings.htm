@@ -10,68 +10,154 @@
 </head>
 <body>
 <div class="sidenav">
- <div class="logo"><img src="img/logonav.png" alt="logo"></div>
+ <div class="menu">
+ <img src="img/logonav.png" alt="logo">
  <a href="rphOverview.htm" >Overview</a>
  <a href="rphConfig.htm"   >Config File</a>
- <ul><li>Settings</li></ul>
+ <span class="smenu">
+ <a class="hit" href="#opts1">Settings</a>
+ <a href="#opts2">Advanced Settings</a><a href="#opts2ei">Explorer Integration</a>
+ </span>
  <a href="rphFilters.htm"  >Filters</a>
  <a href="rphSearching.htm">Searching</a>
  <a href="rphCmdline.htm"  >Command Line</a>
  <a href="rphCredits.htm"  >Credits, License</a>
- <a href="rphChangelog.htm">Change Log</a>
+ <a href="rphChangelog.htm">Change Log</a> 
+ <p class="nih">Hover Over Images to ENLARGE Them</p>
+ </div>
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <div class="main narrow-body">
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr>
-<h3 id="rs_opts1">Settings</h3>
+<h3 id="opts1">Settings</h3>
 <div>
-<div id="opts1">
+<div>
 <figure><img class="imgx" src="img/screen-S01.png"><figcaption>Settings</figcaption></figure>
-</div>
-<div>
 <ul>
-<li>
-<span class="sx">Directories With Empty Files Will Be Considered Empty</span>
+<li><span class="sx">Directories With Empty Files Will Be Considered Empty</span>
 <div>If a directory contains nothing other than empty files it will be treated as an empty directory.</div>
 </li>
-<li>
-<span class="sx">Ignore System Directories</span>
-<div>If a directory is has the SYSTEM attribute it will <b>not</b> be processed. Any Sub-Directories will also <b>not</b> be processed.</div>
+<li><span class="sx">Ignore System Directories</span>
+<div>If a directory has the SYSTEM attribute it will <b>not</b> be processed.
+<br>Any sub-directories will also <b>not</b> be processed.</div>
 </li>
-<li>
-<span class="sx">Ignore Hidden Directories</span>
-<div>If a directory is has the HIDDEN attribute it will <b>not</b> be processed. Any Sub-Directories will also <b>not</b> be processed.</div>
+<li><span class="sx">Ignore Hidden Directories</span>
+<div>If a directory has the HIDDEN attribute it will <b>not</b> be processed.
+<br>Any sub-directories will also <b>not</b> be processed.</div>
+</li><li><span class="sx">Hide Errors During Deletion</span>
+<div>Any errors that occur when attempting to delete folders will <b>not</b> be shown</div>
+</li><li><span class="sx">Hide Error During Search</span>
+<div>Any error sthat occur during the search for empty directories will <b>not</b> be shown</div>
 </li>
-<li><span class="sx">Hide Errors During Deletion</span></li>
-<li><span class="sx">Hide Error During Search</span></li>
-<li>
-<span class="sx">Hide Ignored Directories</span>
-<div>Directories matched by the <em>Directories: Ignored</em> filter will <b>not</b> be shown in the treeview results.</div>
-<div>If not set then these directories show in the results as protected.</div>
+<li><span class="sx">Hide Ignored Directories</span>
+<div>Directories matched by the <em>Directories: Ignored</em> filter will <b>not</b> be shown in the treeview results.
+<br>If not set then these directories show in the results as protected.</div>
 </li>
-<li>
-<span class="sx">Automatically Protect the Starting Directory</span>
+<li><span class="sx">Automatically Protect the Starting Directory</span>
 <div>Prevents the directory specified for the search from being deleted, even if it is empty.</div>
 </li>
-<li><span class="sx">Fast Mode</span></li>
-<li><span class="sx">Detect Paths in the Clipboard</span></li>
+<li><span class="sx">Fast Mode</span>
+<div>This option disables list updates during the find and delete processes and only shows you a final result at the end.
+You won't be able to see the progress but it will be much faster.
+</div>
+</li>
+<li><span class="sx">Detect Paths in the Clipboard</span>
+<div>Whenever you start the application <b>or</b> click on the <em>'Directory to be Searched'</em> textbox it will check if your clipboard contains a path to a directory <span class="eg">(e.g. C:\PATHNAME).</span> If it detects a directory it will use paste the value into the search directory textbox.</div>
+</li>
 </ul>
 <ul>
 <li><span class="sx">How Should Empty Directories Be Deleted?</span>
 <div>Specifies how directories and contents should be deleted.</div>
+<div>
+<ul>
+<li>The default is to put deleted entries into the Recycle Bin</li>
+<li>The <em>Simulate Deletion</em> option does <b>not</b> delete anything</li>
+</ul>
+</div>
+</li>
+<li><span class="sx">Save Prompt</span>
+<div>Displays a prompt when the program exits if the settings have been updated. The prompt allows you to save or not save the settings.</div>
 </li>
 </ul>
 </div>
 
-<div id="opts1a">
+<hr>
+<h3 id="opts2">Advanced Settings</h3>
+<div>
 <figure><img class="imgx" src="img/screen-S02.png"><figcaption>Advanced Settings</figcaption></figure>
+<div>
+<ul>
+<li><span class="sx">Max directory nesting depth</span>
+<div>Nested sub-directories will only be checked to the specified depth. If there are sub-directories below this depth the directory is considered <b>not</b> to be empty.
+<br> A depth of -1 will check check all possible sub-directories.
+<br><span class="eg">eg For <em>X:\DIR1\DIR2\DIR3\DIR4\</em> starting at X:\DIR1 with a depth of 3 will not check beyond DIR3.</span></div>
+</li>
+<li><span class="sx">Pause between each deletion.</span>
+<div>This specifies a number of milliseconds to pause after each directory is deleted. This was in the original RED but isn't really of any practical use. Zero is the default and means there is no delay.</div>
+</li>
+<li><span class="sx">Skip directories less than N hours old</span>
+<div>This allows you to ignore recently created directories.
+<br>This checks the Creation Time of the <b>directory</b>, not its contents.</div>
+</li>
+<li><span class="sx">Infinite-loop detection</span>
+<div>Search processing will stop after the specified number of errors.</div>
+</li>
+</ul>
 </div>
+
+<div class="btd">
+<ul>
+<li><span class="sx">Remember: Window Size and Location</span>
+<div>The size and location of the <span class="red">RED+</span> window is saved in the configuration file when the program exits and is restored the next time the program starts.</div>
+</li>
+<li><span class="sx">Remember: Last Used Directory</span>
+<div>The name of the directory being search is saved in the configuration file when the program exits and is restored the next time the program starts.</div>
+</li>
+<li><span class="sx">Remember: Deletion stats</span>
+<div>A running total of the number of deletions made is kept in the configuration file. Useful for the numerically obsessive.</div>
+</li>
+</ul>
+</div>
+<div class="btd">
+<p><span class="sx">Reset Filters to Defaults</span><br>
+This clears any existing filters you have set up and resets them back to the program defaults. A dialog asking you to confirm your intentions is shown.
+</p>
+<p><span class="sx">Reset Settings to Defaults</span><br>
+This resets program settings back to their defaults. Filter are <b>not</b> reset. A dialog asking you to confirm your intentions is shown.
+</p>
+<p><span class="sx">Copy Debug Information</span><br>
+This copies details of your current settings and filters to the clipboard in a human readable format. This can be useful when reporting issues with the program.
+</p>
+</div>
+</div>
+
+<hr>
+<div id="opts2ei">
+<p><span class="sx">Windows Explorer Integration</span><br>
+This places a <span class="nbn">Remove Empty Directories +</span> entry on the Explorer context menu which is available when you right-click on a directory in the Explorer navigation pane (left-hand side). From <b>v25.3.0.0</b> it is also on the context menu shown when right-clicking on the directory contents pane in (right hand side) in Explorer. This is a <b>Per User</b> setting.
+</p>
+<p>
+<figure><img class="imgx" src="img/screen-S02eil3.png"></figure>
+Check the <span class="nbn">Auto Search</span> box to include the auto search command line parameter in the integration.
+</p>
+<p>If the program is already integrated you can hover over the <span class="nbn">Uninstall</span> button to display a tooltip showing the command line used in the integration.</p>
+<div class="hilt">
+This option is <b>not</b> available if you are running <span class="red">RED+</span> from a removable drive. This option makes changes to the Windows Registry which point to a program which may no longer be available.
+</div>
+<div class="note">
+<b>NOTE:</b> Versions before <em>v25.3.0.0</em> used a slightly different integration method that required <b>admin</b> rights to change. This old method still works but only for the left-hand side navigation pane of Explorer. You can tell if you have the old method installed because the <em>Uninstall</em> button has a shield on it. You can run later versions as admin to uninstall this method and then install the new method if you want.
+<figure><img class="imgx" src="img/screen-S02eil1.png"><figcaption>Old Integration Method (As Shown by The Shield)</figcaption></figure>
+<figure><img class="imgx" src="img/screen-S02eil2.png"><figcaption>New Integration Method (No Shield)</figcaption></figure>
+</div>
+wibble
+</div>
+
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr><p>&nbsp;</p>
 <div class="footer">
- <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-November</span>&nbsp;</span>
+<span class="fal">&nbsp;&nbsp;<small><span class="red">RED+</span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-12</span>&nbsp;</span>
 </div>
 </div></body>
 </html>

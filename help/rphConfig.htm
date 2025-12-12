@@ -10,15 +10,18 @@
 </head>
 <body>
 <div class="sidenav">
- <div class="logo"><img src="img/logonav.png" alt="logo"></div>
+ <div class="menu">
+ <img src="img/logonav.png" alt="logo">
  <a href="rphOverview.htm" >Overview</a>
- <ul><li>Config File</li></ul>
+ <a href="#" class="hit"   >Config File</a>
  <a href="rphSettings.htm" >Settings</a>
  <a href="rphFilters.htm"  >Filters</a>
  <a href="rphSearching.htm">Searching</a>
  <a href="rphCmdline.htm"  >Command Line</a>
  <a href="rphCredits.htm"  >Credits, License</a>
  <a href="rphChangelog.htm">Change Log</a>
+ <p class="nih">Hover Over Images to ENLARGE Them</p>
+ </div>
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <div class="main narrow-body">
@@ -27,14 +30,14 @@
 <h3 id="rs_conf1">Config File</h3>
 <div>
 <div>
-<span class="red">RED+</span> stores its settings in a file with the same name as the executable (<span class="nb">RED+.exe</span>) but with a <i>.cfg</i> extension (<span class="nb">RED+.cfg</span>). If <span class="red">RED+</span> cannot find its config file it will prompt you to create one - with default settings.
+<span class="red">RED+</span> stores its settings in a file with the same name as the executable (<span class="nbs">RED+.exe</span>) but with a <i>.cfg</i> extension (<span class="nbs">RED+.cfg</span>). If <span class="red">RED+</span> cannot find its config file it will prompt you to create one - with default settings.
 <figure><img src="img/screen-C01.png"><figcaption>Config File Prompt</figcaption></figure>
 </div>
 
 <div>
 <em>Portable Mode</em> stores the config in the same folder as the executable.
 <br>You <b>MUST</b> have write permissions in this folder.
-<p class="indent1">By default Windows will prevent you from writing to files in your <em>%ProgramFiles%</em> <span class="nb">[default=C:\Program Files]</span> and <em>%ProgramFiles(x86)%</em> <span class="nb">[default=C:\Program Files (x86)]</span> folders.
+<p class="indent1">By default Windows will prevent you from writing to files in your <em>%ProgramFiles%</em> <span class="eg">[default=C:\Program Files]</span> and <em>%ProgramFiles(x86)%</em> <span class="eg">[default=C:\Program Files (x86)]</span> folders.
 </p>
 <br><em>%APPDATA%</em> stores the config in your Windows user data folder.
 <br>This is typically <em>C:\Users\<i>&lt;your-username&gt;</i>\AppData\Roaming\NotBob\RemoveEmptyDirectories</em>
@@ -43,7 +46,7 @@
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr><p>&nbsp;</p>
 <div class="footer">
- <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-November</span>&nbsp;</span>
+<span class="fal">&nbsp;&nbsp;<small><span class="red">RED+</span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-12</span>&nbsp;</span>
 </div>
 </div></body>
 </html>

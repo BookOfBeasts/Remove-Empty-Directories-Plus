@@ -56,10 +56,17 @@ In July 2024 Robert 'NotBob' Bookerby created RED+ using the core code of RED.
 In June 2025 RED+ was made available on GitHub
 
 ## Changelog
+25.3.0.0    (*2025 December*)
+- Save Prompt was not being actioned on program exit
+- Reset Settings/Filters not being actioned correctly
+- Reset Settings no longer resets filters
+- Change how Explorer Integration is handled. 
+	- Read the help file for more info (Settings - Advanced Settings - Windows Explorer Integration)
+- Updates to help documentation
+
 25.2.0.0   (*2025 November*)
 - Improve command line parsing
 - Updates to basic help
-
 
 25.1.0.0   (*2025 November*)
 - Added basic help documentation (help\index.htm)

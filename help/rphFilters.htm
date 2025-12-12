@@ -10,37 +10,78 @@
 </head>
 <body>
 <div class="sidenav">
- <div class="logo"><img src="img/logonav.png" alt="logo"></div>
+ <div class="menu">
+ <img src="img/logonav.png" alt="logo">
  <a href="rphOverview.htm" >Overview</a>
  <a href="rphConfig.htm"   >Config File</a>
  <a href="rphSettings.htm" >Settings</a>
- <ul><li>Filters</li></ul>
+ <a href="#" class="hit"   >Filters</a>
  <a href="rphSearching.htm">Searching</a>
  <a href="rphCmdline.htm"  >Command Line</a>
  <a href="rphCredits.htm"  >Credits, License</a>
  <a href="rphChangelog.htm">Change Log</a>
+ <p class="nih">Hover Over Images to ENLARGE Them</p>
+ </div>
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <div class="main narrow-body">
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr>
-<h3 id="rs_filt1">Filters (aka Rules)</h3>
+<h3 id="rs_filt1">Filters</h3>
 <div>
-<p>These are the default filter rules that <span class="red">RED+</span> uses.</p>
-<p>You can reset the rules to these defaults on the <a href="rphSettings.htm#opts1a">Advanced Settings</a> tab.</p>
-<figure><img class="imgx" src="img/screen-F01.png"><figcaption>Filters: Directory Ignore</figcaption></figure>
-<figure><img class="imgx" src="img/screen-F02.png"><figcaption>Filters: Directory Never Empty</figcaption></figure>
-<figure><img class="imgx" src="img/screen-F03.png"><figcaption>Filters: File Ignore</figcaption></figure>
-<p>Filter rules can be added, edited, or deleted using the toolbar above the rules grid.</p>
+
+<h4>Editing Filters</h4>
+<div>
+<p>Filters can be added, edited, or deleted using the toolbar above the filter grid.</p>
+To edit an existing filter you must select it first. This can be done by clicking on the filter icon <img src="img/icon-filter.png"  alt="icon"> next to the filter to be changed. Alternatively you can right-click on the filter icon <img src="img/icon-filter.png" alt="icon"> to display a pop-up menu.<br>
+<ul>
+<li><img src="img/icon-filter-edit.png" alt="icon"> Click this to <b>EDIT</b> the Match Text for a filter
+<ul>
+<li>To edit the <b>Method</b> right-click (or double-click) on the Method text to display a list of methods. Click on the method you want to apply to the filter.</li>
+</ul></li>
+<li><img src="img/icon-filter-cancel.png" alt="icon"> Click this to cancel an edit</li>
+<li><img src="img/icon-filter-del.png" alt="icon"> Click this to <b>DELETE</b> a filter</li>
+<li><img src="img/icon-filter-add.png" alt="icon"> Click this to <b>ADD</b> a new filter</li>
+<li>Individual filters can be enabled/disabled using the checkbox in the Active column</li>
+</ul>
+</div>
 <figure><img class="imgx" src="img/screen-F01-edit1.png"><figcaption>Filters: Edit</figcaption></figure>
 <figure><img class="imgx" src="img/screen-F01-edit2.png"><figcaption>Filters: Edit</figcaption></figure>
-Clicking on the help icon <img src="img/screen-F01-edithlp.png" alt="help icon"> on the Filters page will display help editing rules (specific to the filter).
+Clicking on the help icon <img src="img/screen-F01-edithlp.png" alt="help icon"> on the Filters page will display help specific to the filter type.
 <figure><img class="imgx" src="img/screen-F01-edit3.png"><figcaption>Filters: Edit Help</figcaption></figure>
+
+<h4>Regular Expressions</h4>
+<p><span class="red">RED+</span> RegEx methods uses the <a href="https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference/" target="_blank">.NET Regular Expression syntax</a>.
+</p>
+<p>Be <b>very careful</b> when using these. A badly configured RegEx can match files you didn't expect and cause important files to be deleted. If you don't understand regular expressions then don't use them.</p>
+
+<hr>
+<div>
+<h4>Default Filters</h4>
+<p>The following screenshots show the default filters that <span class="red">RED+</span> uses.<br>
+You can reset the filters to these defaults on the <a href="rphSettings.htm#opts1a">Advanced Settings</a> tab.</p>
+<div class="btd">
+<h4>Directories: Ignore</h4>
+Any directory found that matches the filter will <b>not</b> be processed. This includes any sub-directories.
+<figure><img class="imgx" src="img/screen-F01.png"><figcaption>Filters: Directory Ignore</figcaption></figure>
+</div>
+<div class="btd">
+<h4>Directories: Never Empty</h4>
+Any directory found that matches the filter will never be considered empty even if it contains no files. This differs from <em>Directories: Ignore</em> because any sub-directories <b>will</b> be processed.
+<figure><img class="imgx" src="img/screen-F02.png"><figcaption>Filters: Directory Never Empty</figcaption></figure>
+</div>
+<div class="btd">
+<h4>Files: Ignore</h4>
+Any file that matches the filter will be treated as though <b>it does not exist</b>. This only matches against the <em>filename</em>, not the directory it is in.
+<figure><img class="imgx" src="img/screen-F03.png"><figcaption>Filters: File Ignore</figcaption></figure>
+</div>
+</div>
+
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr><p>&nbsp;</p>
 <div class="footer">
- <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-November</span>&nbsp;</span>
+<span class="fal">&nbsp;&nbsp;<small><span class="red">RED+</span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-12</span>&nbsp;</span>
 </div>
 </div></body>
 </html>

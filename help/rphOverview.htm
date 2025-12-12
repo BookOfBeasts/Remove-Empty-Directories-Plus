@@ -10,8 +10,9 @@
 </head>
 <body>
 <div class="sidenav">
- <div class="logo"><img src="img/logonav.png" alt="logo"></div>
- <ul><li>Overview</li></ul>
+ <div class="menu">
+ <img src="img/logonav.png" alt="logo">
+ <a href="#" class="hit"   >Overview</a>
  <a href="rphConfig.htm"   >Config File</a>
  <a href="rphSettings.htm" >Settings</a>
  <a href="rphFilters.htm"  >Filters</a>
@@ -19,23 +20,24 @@
  <a href="rphCmdline.htm"  >Command Line</a>
  <a href="rphCredits.htm"  >Credits, License</a>
  <a href="rphChangelog.htm">Change Log</a>
+ <p class="nih">Hover Over Images to ENLARGE Them</p>
+ </div>
 </div>
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <div class="main narrow-body">
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr>
 <div>
-<h3 id="rs_oview">Overview</h3>
+<h3 id="overview">Overview</h3>
 <div>
 <p>
-<span class="red">RED+</span> finds, displays, and deletes empty directories recursively below a given start folder.<br>
-Furthermore, it allows you to create custom rules for keeping and deleting folders (e.g. treat directories with empty files as empty).
+Remove Empty Directories Plus (aka <span class="red">RED+</span>) finds, displays, and deletes empty directories recursively below a given start folder. It allows you to create custom rules and filters for keeping and deleting folders (e.g. ignore directories  called <em>RECYCLER</em>, treat directories with empty files as empty etc).
 </p>
 <p>
-<span class="red">RED+</span> is an enhanced version of <a href="https://www.jonasjohn.de/">Jonas John</a>"s Remove Empty Directories (aka <a href="https://github.com/hxseven/Remove-Empty-Directories/">RED</a>). I found RED very useful over the years, but I wanted a little bit more. Jonas hadn"t updated RED in over 4 years and was unresponsive to email contact. And so <span class="red">RED+</span> was created.
+<span class="red">RED+</span> is an enhanced version of <a href="https://www.jonasjohn.de/" target="_blank">Jonas John</a>"s Remove Empty Directories (aka <a href="https://github.com/hxseven/Remove-Empty-Directories/" target="_blank">RED</a>). I found RED very useful over the years, but I wanted a little bit more. Jonas hadn't updated RED in over 4 years and was unresponsive to email contact. And so <span class="red">RED+</span> was created.
 </p>
 <p>
-<span class="red">RED+</span> is <b>not</b> a rewrite. It uses <b>much</b> of the same source code as the original RED but has had the filter matching and editing portions rewritten to provide more flexible and easy to edit rules. This was done to:
+<span class="red">RED+</span> is <b>not</b> a rewrite. It uses <b>much</b> of the same source code as the original RED but has had the settings, filter matching and filter editing portions rewritten. This was done to:
 </p>
 <ul> 
 <li>Provide more flexible matching rules (Contains, Endswith, Startswith, Exact etc)</li>
@@ -43,7 +45,7 @@ Furthermore, it allows you to create custom rules for keeping and deleting folde
 <li>To make it portable</li>
 </ul>
 <h4>What is it good for?</h4>
-<p><span class="nb">From the original RED author:</span></p>
+<h5>From the original RED:</h5>
 <blockquote>
 One might think that searching and deleting empty directories is a trivial thing, but once you have hundreds of them it get"s really exhausting. That"s the reason Jonas made RED. It’s a small and simple tool that searches and deletes empty directories recursively below a given start folder. And before deleting anything it let’s you check all empty directories it found.
 </blockquote>
@@ -51,12 +53,25 @@ One might think that searching and deleting empty directories is a trivial thing
 <ul>
  <li>Shows empty directories before deleting them</li>
  <li>Supports multiple delete modes (including Delete to recycle bin)</li>
- <li>User configurable filters allow white and black listing of directories</li>
+ <li>User configurable filters to control directory processing</li>
  <li>Filter rules can be enabled / disabled as required</li>
  <li>Can treat directories with empty files as empty</li>
  <li>Portable</li>
 </ul>
 </div>
+
+<div class="note">
+<h4 class="red">You Use This Software Entirely At Your Own Risk!</h4>
+I've been using versions of the original RED for many years, and this enhanced RED+ since July 2024 with no significant issues. But I offer no guarantee that it will work for you on your system.
+</div>
+
+<h4>System Requirements</h4>
+<ul>
+<li>Windows 7 or later</li>
+<li>Microsoft .NET Framework 4.8</li>
+<li>There is no installer. Just unzip into a folder of your choice and run it.</li>
+</ul>
+
 <div>
 The <b>Search</b> tab on main screen is where you specify the directory where a search for empty directories is to begin, perform the search, and show the results.
 It is also where you can delete the empty directories it has found.
@@ -67,7 +82,8 @@ The results of a search are shown in a treeview. The icons next to each director
 <!-- ======= ======= ======= ======= ======= ======= ======= -->
 <hr><p>&nbsp;</p>
 <div class="footer">
- <span class="fal">&nbsp;&nbsp;<small><span class="red"><span class="red">RED+</span></span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-November</span>&nbsp;</span>
+<span class="fal">&nbsp;&nbsp;<small><span class="red">RED+</span> by Jonas John &amp; Robert 'NotBob' Bookerby</small></span><span class="far">&nbsp;&nbsp;<span class="moddate">mod: 2025-12</span>&nbsp;</span>
 </div>
-</div></body>
+</div>
+</body>
 </html>
