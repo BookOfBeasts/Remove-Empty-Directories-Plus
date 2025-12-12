@@ -1,6 +1,6 @@
 Remove Empty Directories Plus (RED+) is based on Jonas John's original Remove Empty Directories (RED)
 
-HINTS & FAQ
+HINTS & FAQ:
 
   * Right-click on a directory in the tree to get more options.
 
@@ -24,18 +24,13 @@ HINTS & FAQ
 
 COMMAND LINE
   * RED+.exe [-autosearch] "path"
-      
+
       -autosearch is an OPTIONAL switch which searches the supplied path as soon 
-      as RED+ starts. It MUST be supplied before "path"
-      
-      "path" is the path to be searched. It should be enclosed in double quotes.
-  
+     as RED+ starts. If supplied it MUST be before "path".
 
-TOOLS USED TO DEVELOP RED
-  * Microsoft Visual Studio C# Community
-
+      "path" is the directory to be searched. It should be enclosed in double quotes.
 
 LICENSE
  * The program is distributed under the terms of the GNU Lesser General 
    Public License which you can read over here: 
-   http://www.gnu.org/copyleft/lgpl.html
+	 https://www.gnu.org/licenses/lgpl-3.0.html

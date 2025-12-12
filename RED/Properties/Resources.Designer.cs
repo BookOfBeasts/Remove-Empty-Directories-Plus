@@ -61,7 +61,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-12-03T15:40:33
+        ///   Looks up a localized string similar to 2025-12-12T10:47:25
         ///.
         /// </summary>
         internal static string BuildTimeDebug {
@@ -71,7 +71,7 @@ namespace RED.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2025-12-01T13:29:12
+        ///   Looks up a localized string similar to 2025-12-12T10:44:59
         ///.
         /// </summary>
         internal static string BuildTimeRelease {
@@ -93,9 +93,9 @@ namespace RED.Properties {
         ///    improvement but you will lose the recycle bin safety net and you won&apos;t see 
         ///    the progress. I also  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string help_filters {
+        internal static string helpAbout {
             get {
-                return ResourceManager.GetString("help_filters", resourceCulture);
+                return ResourceManager.GetString("helpAbout", resourceCulture);
             }
         }
         

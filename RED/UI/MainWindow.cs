@@ -107,7 +107,7 @@ namespace RED.UI
             SetProcessActiveLock(false);
             UiProgressBar(false);
 
-            txtHelp.Text = Properties.Resources.help_filters;
+            txtHelp.Text = Properties.Resources.helpAbout;
 
             ProcessCommandLineArgs();
 
@@ -128,7 +128,8 @@ namespace RED.UI
             gbExplorerIntegration.Enabled = true;
             lblExplorerIntegrationInfo.Text = TXT.Translate("This is a Per User setting");
 
-            int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer();
+            string command;
+            int isIntegrated = SystemFunctions.IsRegKeyIntegratedIntoWindowsExplorer(out command);
 
             switch (isIntegrated)
             {
@@ -174,6 +175,10 @@ namespace RED.UI
             }
             chkExplorerIntegrateAutoSearch.Enabled = btnExplorerIntegrate.Enabled;
             chkExplorerIntegrateAutoSearch.Visible = chkExplorerIntegrateAutoSearch.Enabled;
+            if (!string.IsNullOrWhiteSpace(command))
+            {
+                uxToolTips.SetToolTip(btnExplorerRemove, command);
+            }
         }
 
         /// <summary>
@@ -192,7 +197,7 @@ namespace RED.UI
                 int i = 1;
                 while (i < args.Length && args[i].StartsWith("-"))
                 {
-                    if (args[i].ToLower() == "-autosearch")
+                    if (args[i].ToLowerInvariant() == "-autosearch")
                     {
                         AutoSearchOnStart = true;
                     }
@@ -863,8 +868,9 @@ namespace RED.UI
 
         private void btnResetFilters_Click(object sender, EventArgs e)
         {
-            if (DialogResult.OK == UiAssist.MsgBoxYesNo(this, TXT.Translate("Do you really want to reset ALL FILTERS to their default values?")))
+            if (DialogResult.Yes == UiAssist.MsgBoxYesNo(this, TXT.Translate("Reset ALL FILTERS to their default values?")))
             {
+                ConfigFromUI();
                 RedConfig.Filters.SetToDefaults();
                 ConfigToUI();
             }
@@ -872,10 +878,10 @@ namespace RED.UI
 
         private void btnResetConfig_Click(object sender, EventArgs e)
         {
-            if (DialogResult.OK == UiAssist.MsgBoxYesNo(this, TXT.Translate("Do you really want to reset ALL Settings and Filters to their default values?")))
+            if (DialogResult.Yes == UiAssist.MsgBoxYesNo(this, TXT.Translate("Reset SETTINGS (excluding filters) to their default values?")))
             {
+                ConfigFromUI();
                 RedConfig.Options.SetToDefaults();
-                RedConfig.Filters.SetToDefaults();
                 ConfigToUI();
                 TreeMgr.SetFastMode(RedConfig.Options.FastSearchMode);
             }
