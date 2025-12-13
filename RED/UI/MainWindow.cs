@@ -804,8 +804,16 @@ namespace RED.UI
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            bool ask = cbSavePrompt.Checked || ModifierKeys.HasFlag(Keys.Alt);
-            ConfigUpdateAndSave(ask);
+            if (Core == null || Core.CurrentProcessStep == WorkflowSteps.Idle)
+            {
+                bool ask = cbSavePrompt.Checked || ModifierKeys.HasFlag(Keys.Alt);
+                ConfigUpdateAndSave(ask);
+            }
+            else
+            {
+                e.Cancel = true;
+                UiAssist.MsgBoxWarning(this, "RED+ is busy, cannot close.");
+            }
         }
 
         private void MainWindow_Shown(object sender, EventArgs e)
