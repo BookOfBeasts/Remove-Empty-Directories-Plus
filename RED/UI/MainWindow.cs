@@ -552,7 +552,7 @@ namespace RED.UI
             }
 
             TreeMgr.ProtectSelected();
-            RedConfig.Filters.DirectoriesToIgnore.Add("+|P|" + ((DirectoryInfo)tvSearchResults.SelectedNode.Tag).FullName);
+            RedConfig.Filters.AddDirectoryToIgnore("+|P|" + ((DirectoryInfo)tvSearchResults.SelectedNode.Tag).FullName);
             ConfigToUI();
 
             // Focus Directories to Ignore Filter tab
@@ -812,7 +812,7 @@ namespace RED.UI
             else
             {
                 e.Cancel = true;
-                UiAssist.MsgBoxWarning(this, "RED+ is busy, cannot close.");
+                UiAssist.MsgBoxWarning(this, TXT.Translate("RED+ is busy, cannot close."));
             }
         }
 

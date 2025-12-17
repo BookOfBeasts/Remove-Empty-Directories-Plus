@@ -22,14 +22,6 @@ HINTS & FAQ:
     If that does not help you could try using tools such as
     Unlocker (http://cedrick.collomb.perso.sfr.fr/unlocker/).
 
-COMMAND LINE
-  * RED+.exe [-autosearch] "path"
-
-      -autosearch is an OPTIONAL switch which searches the supplied path as soon 
-     as RED+ starts. If supplied it MUST be before "path".
-
-      "path" is the directory to be searched. It should be enclosed in double quotes.
-
 LICENSE
  * The program is distributed under the terms of the GNU Lesser General 
    Public License which you can read over here: 

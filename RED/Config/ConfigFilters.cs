@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using NotBob.Lib;
@@ -35,7 +35,13 @@ namespace RED.Config
 			set { base.DataIsDirty = value; }
 		}
 
-		internal void SetToDefaults()
+        internal void AddDirectoryToIgnore(string value)
+        {
+            DirectoriesToIgnore.Add(value);
+            DataIsDirty = true;
+        }
+
+        internal void SetToDefaults()
 		{
 			FilesToIgnore.Clear();
 			FilesToIgnore.Add(@"+|N|desktop.ini");
