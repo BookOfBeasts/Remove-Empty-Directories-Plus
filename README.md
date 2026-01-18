@@ -11,7 +11,9 @@ It has had some new features added, some UI tweaks, been made fully portable (it
 RED+ finds, displays, and deletes empty directories recursively below a given start folder. Furthermore, 
 it allows you to create custom rules for keeping and deleting folders (e.g. treat directories with empty files as empty).
 
-### You use this software entirely at your own risk!
+![screenshot](help/img/screen-M02.png)
+
+### ⚠️ You use this software entirely at your own risk!
 I've been using versions of the original RED for many years, and this enhanced RED+ since July 2024 with no significant issues. But I offer no guarantee that it will work for you on your system. 
 
 
@@ -102,7 +104,7 @@ Icon sources
 - Nuvola icons (GNU LGPL 2.1. license)
 - NuoveXT icons (GPL license)
 - [famfamfam silk icons](https://github.com/legacy-icons/famfamfam-silk) (Creative Commons Attribution 2.5 license) 
-- [FatCow free-icons] (https://github.com/gammasoft/fatcow) (Creative Commons Attribution 3.0 license)
+- [FatCow free-icons](https://github.com/gammasoft/fatcow) (Creative Commons Attribution 3.0 license)
 
 ## License
 
