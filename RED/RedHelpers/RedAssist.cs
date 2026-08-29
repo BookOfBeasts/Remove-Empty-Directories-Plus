@@ -130,25 +130,27 @@ namespace RED.Helper
 
         internal static bool IsDrivePathRemovable(string path)
         {
-            bool respx = false;
+            if (string.IsNullOrWhiteSpace(path)) return false;
 
-            if (!string.IsNullOrWhiteSpace(path))
+            //Validate network UNC path
+            if (path.StartsWith(@"\\") || Uri.TryCreate(path, UriKind.Absolute, out Uri uri) && uri.IsUnc) return false;
+
+            try
             {
                 var drive = Path.GetPathRoot(path);
-                if (drive != null)
+                if (!string.IsNullOrWhiteSpace(drive))
                 {
                     var di = new DriveInfo(drive);
-                    if (di != null)
-                    {
-                        if (di.DriveType == DriveType.Removable)
-                        {
-                            respx = true;
-                        }
-                    }
+                    return di.DriveType == DriveType.Removable;
                 }
             }
+            catch (ArgumentException)
+            {
 
-            return respx;
+                return false;
+            }
+
+            return false;
         }
     }
 }
