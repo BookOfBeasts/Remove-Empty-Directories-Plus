@@ -1,4 +1,4 @@
-/* CSS for RED+ Help: v25.12.13a  */
+/* CSS for RED+ Help: v26.0607a  */
 /* Only use W3C Color Names.      */
 html * {font-family: Arial, sans-serif;}
 h1,h2,h3 {text-decoration: underline;}
@@ -10,6 +10,7 @@ figcaption {display: table-caption; caption-side: top; color: SlateGrey; backgro
 code {font-family: Consolas,"courier new"; color: Black; background-color: GhostWhite; border: 1px solid Grey; padding: 0.5em; margin: 0.5em;}
 blockquote {font-style: italic;}
 li div {padding-bottom: 0.4em;}
+span.greeneggs {display: none; color: green;}
 
 .narrow-body {max-width: 800px; margin: 0 auto;}
 .footer  {position: fixed; left: 0; bottom: 0; width: 100%; background-color: LightBlue; color: Grey; text-align: center;z-index: 999;}
@@ -20,6 +21,7 @@ li div {padding-bottom: 0.4em;}
 .fal  {float:left;}
 .far  {float:right;}
 .red  {font-weight: bold; color: Red;}
+.warn {font-weight: bold; font-style: italic; font-size: smaller; color: Red;}
 .ver  {font-weight: bold;}
 .imgx {width: 50%;}
 .imgx:hover {position: static; height: auto; width: auto;}
@@ -31,6 +33,8 @@ li div {padding-bottom: 0.4em;}
 .nbs  {font-size: smaller; font-weight: bold;}
 .sx   {font-size: medium; font-weight: bold; color: DarkBlue;}
 .sm   {font-size: smaller;}
+.smx  {font-size: x-small;}
+.smxg {font-size: x-small; color: SlateGrey;}
 .btd  {border-top: 1px dashed LightGrey; padding: 0.5em 0em 1em 0em;}
 .box1 {border: 1px solid LightGrey;}
 .box2 {border: 1px solid LightGrey; background-color: WhiteSmoke;}

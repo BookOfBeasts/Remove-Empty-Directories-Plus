@@ -6,10 +6,10 @@ RED+: Remove Empty Directories Plus
 RED+ is a fork of [Jonas John's](http://www.jonasjohn.de/) RED  
 RED+ was created by [Robert 'NotBob' Bookerby](https://github.com/BookOfBeasts)  
 
-It has had some new features added, some UI tweaks, been made fully portable (it uses a local config file rather than one stored in some back-water of %appdata%) and had the name matching routines completely rewritten in order to allow more sophisticated matching.
+It has had some new features added, some UI tweaks, been made fully portable \(it uses a local config file rather than one stored in some back-water of %appdata%\) and had the name matching routines completely rewritten in order to allow more sophisticated matching.
 
 RED+ finds, displays, and deletes empty directories recursively below a given start folder. Furthermore, 
-it allows you to create custom rules for keeping and deleting folders (e.g. treat directories with empty files as empty).
+it allows you to create custom rules for keeping and deleting folders \(e.g. treat directories with empty files as empty\).
 
 ![screenshot](help/img/screen-M02.png)
 
@@ -21,7 +21,7 @@ I've been using versions of the original RED for many years, and this enhanced R
 
 - Simple user interface
 - Shows empty directories before deleting them
-- Supports multiple delete modes (including Delete to recycle bin)
+- Supports multiple delete modes \(including Delete to recycle bin\)
 - Allows whitelisting and blacklisting of directories by using filter lists
 - Can detect directories with empty files as empty
 
@@ -31,10 +31,10 @@ I've been using versions of the original RED for many years, and this enhanced R
 - Windows 7 or later
 - Microsoft .NET Framework 4.8
 - There is no installer. Just unzip into a folder of your choice and run it.
-- If the config file (**RED+.cfg**) isn't found it will prompt you to create one:
+- If the config file \(**RED+.cfg**\) isn't found it will prompt you to create one:
 	- Portable Mode stores the config in the same folder as the executable
-	- %APPDATA% stores the config in the a subfolder of Windows %APPDATA% (non-portable)
-	- If you place RED+ in a protected folder (such as 'Program Files' or 'Program Files (x86)') then Windows will prevent writing of the portable config file. Select %APPDATA% instead.
+	- %APPDATA% stores the config in the a subfolder of Windows %APPDATA% \(non-portable\)
+	- If you place RED+ in a protected folder \(such as 'Program Files' or 'Program Files \(x86\)'\) then Windows will prevent writing of the portable config file. Select %APPDATA% instead.
 
 ## How to contribute to the project
 
@@ -58,30 +58,34 @@ In July 2024 Robert 'NotBob' Bookerby created RED+ using the core code of RED.
 In June 2025 RED+ was made available on GitHub
 
 ## Changelog
-25.3.0.0    (*2025 December*)
+25.4.0.0    \(*2026 August*\)
+- Fix exception at startup when using UNC network paths \[issue #15\] \(thanks to jorensanbar\)
+- Updates to help documentation
+
+25.3.0.0    \(*2025 December*\)
 - Save Prompt was not being actioned on program exit
 - Reset Settings/Filters not being actioned correctly
 - Reset Settings no longer resets filters
 - Change how Explorer Integration is handled. 
-	- Read the help file for more info (Settings - Advanced Settings - Windows Explorer Integration)
+	- Read the help file for more info \(Settings - Advanced Settings - Windows Explorer Integration\)
 - Prevent exit if Search or Delete is active
 - Updates to help documentation
 
-25.2.0.0   (*2025 November*)
+25.2.0.0   \(*2025 November*\)
 - Improve command line parsing
 - Updates to basic help
 
-25.1.0.0   (*2025 November*)
-- Added basic help documentation (help\index.htm)
+25.1.0.0   \(*2025 November*\)
+- Added basic help documentation \(help\index.htm\)
 	- NOTE: Incomplete and very much a work-in-progress
 - Added microseconds to display of runtime after a search
 - Disable search related buttons when not on search tab
 - Added *-autosearch* command line switch
 
-25.0.1.0   (*2025 November*)  
+25.0.1.0   \(*2025 November*\)
 - Fixed issue with Last Used Directory not being restored on program load
 
-25.0.0.0   (*2025 June*)  
+25.0.0.0   \(*2025 June*\)
 - The 1st release of RED+, which is based on [Jonas John's](http://www.jonasjohn.de/) RED 2.3.0 beta
 - Completely rewrote the directory and file name matching routines allowing the use of an extended syntax for more sophisticated matches
 - Added a new directory filter to allowing specifying that a directory is **never** to be treated as empty but still check any sub-directories
@@ -101,12 +105,12 @@ Third-party components
 - File system calls are powered by the [AlphaFS library](https://github.com/alphaleonis/AlphaFS)
 
 Icon sources
-- Nuvola icons (GNU LGPL 2.1. license)
-- NuoveXT icons (GPL license)
-- [famfamfam silk icons](https://github.com/legacy-icons/famfamfam-silk) (Creative Commons Attribution 2.5 license) 
-- [FatCow free-icons](https://github.com/gammasoft/fatcow) (Creative Commons Attribution 3.0 license)
+- Nuvola icons \(GNU LGPL 2.1. license\)
+- NuoveXT icons \(GPL license\)
+- [famfamfam silk icons](https://github.com/legacy-icons/famfamfam-silk) \(Creative Commons Attribution 2.5 license\) 
+- [FatCow free-icons](https://github.com/gammasoft/fatcow) \(Creative Commons Attribution 3.0 license\)
 
 ## License
 
 RED is free software; you can redistribute it and/or modify it under the terms of the
-[GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html) as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+[GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html) as published by the Free Software Foundation; either version 3 of the License, or \(at your option\) any later version.

@@ -130,10 +130,16 @@ namespace RED.Helper
 
         internal static bool IsDrivePathRemovable(string path)
         {
-            if (string.IsNullOrWhiteSpace(path)) return false;
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return false;
+            }
 
             //Validate network UNC path
-            if (path.StartsWith(@"\\") || Uri.TryCreate(path, UriKind.Absolute, out Uri uri) && uri.IsUnc) return false;
+            if (path.StartsWith(@"\\") || Uri.TryCreate(path, UriKind.Absolute, out Uri uri) && uri.IsUnc)
+            {
+                return false;
+            }
 
             try
             {
@@ -146,7 +152,6 @@ namespace RED.Helper
             }
             catch (ArgumentException)
             {
-
                 return false;
             }
 
